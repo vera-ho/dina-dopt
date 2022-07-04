@@ -1,0 +1,22 @@
+{
+  "name": "dina-dopt",
+  "version": "1.0.0",
+  "description": "Adopt prehistoric animals",
+  "main": "app.js",
+  "scripts": {
+    "test": "\"n/a\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vh71886/dina-dopt.git"
+  },
+  "keywords": [
+    "n/a"
+  ],
+  "author": "VH, MC, KN, AN",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/vh71886/dina-dopt/issues"
+  },
+  "homepage": "https://github.com/vh71886/dina-dopt#readme"
+}
