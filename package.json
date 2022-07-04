@@ -4,6 +4,9 @@
   "description": "Adopt prehistoric animals",
   "main": "app.js",
   "scripts": {
+    "frontend-install": "npm install --prefix frontend",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "test": "\"n/a\""
   },
   "repository": {
@@ -18,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/vh71886/dina-dopt/issues"
   },
-  "homepage": "https://github.com/vh71886/dina-dopt#readme"
+  "homepage": "https://github.com/vh71886/dina-dopt#readme",
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  }
 }
