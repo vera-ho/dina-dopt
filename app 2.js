@@ -7,8 +7,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 
 const users = require('./routes/api/users.js');
-const pets = require('./routes/api/pets.js');
-const reviews = require('./routes/api/reviews.js');
+// const pets = require('./routes/api/pets.js');
 // const carts = require('./routes/api/carts.js');
 
 if (process.env.NODE_ENV === 'production') {
@@ -18,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// app.get('/', (req, res) => res.send('Hello World'));
+app.get('/', (req, res) => res.send('Hello World'));
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -32,8 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api/users', users);
-app.use('/api/reviews', reviews);
-app.use('/api/pets', pets);
+// app.use('/api/pets', pets);
 // app.use('/api/carts', carts);
 
 const port = process.env.PORT || 5001;
