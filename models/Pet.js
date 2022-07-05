@@ -17,6 +17,7 @@ const PetSchema = new Schema(
     },
     price: {
       type: Number,
+      default: 0,
     },
   },
   {
