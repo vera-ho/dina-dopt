@@ -6,6 +6,10 @@ const ReviewSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
+  pet: {
+    type: Schema.Types.ObjectId,
+    ref: 'pets'
+  },
   title: {
     type: String,
     required: false,
@@ -22,3 +26,11 @@ const ReviewSchema = new Schema({
 });
 
 module.exports = Review = mongoose.model('review', ReviewSchema);
+
+// user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+// pet: { type: Schema.Types.ObjectId, ref: 'Pet', required: true },
+// rating: { type: Number, min: 1, max: 5, required: true },
+// content: { type: String, required: true },
+// });
+
+// module.exports = Review = mongoose.model('Review', ReviewSchema);
