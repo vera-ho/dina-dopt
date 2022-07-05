@@ -4,7 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
-import { logout } from './actions/session_actions';
+import { login, logout } from './actions/session_actions';
 import './assets/stylesheets/main.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,5 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   ReactDOM.render(<Root store={store} />, root);
 
+  store.dispatch(login({ email: "test0@test0.com", password: "password" }))
   window.store = store;
 });
