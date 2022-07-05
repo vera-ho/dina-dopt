@@ -1,13 +1,9 @@
 .pets-index-container {
-    margin: 0 auto;
-    width: 100%;
     height: 100vh;
-    background-color: $white;
-
-    position: fixed;
-    top: 80px;
+    max-width: 80%;
+    margin: 0 auto;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 100px 20px;
 }
 
 .pets-index-content > h1 {
@@ -16,20 +12,33 @@
 }
 
 .pets-index-content > ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-evenly;
+    // justify-content: flex-start;
+    // flex-wrap: wrap;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+     
+    // add @media
+    @media screen and (max-width: 1280px) {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    @media screen and (max-width: 860px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .pets-index-content > ul > li {
-    width: 600px;
-    height: 300px;
-    
     background-color: $theme;
     margin: 25px;
 
     box-sizing: border-box;
-    border: 1px dotted red;
+    border: 5px dashed $charcoal;
     padding: 20px;
 
 }
@@ -38,18 +47,23 @@
     color: $main-color;
     font-family: $main-font-family;
     font-size: 18px;
-
-    position: relative;
-}
-
-.pet-index-item-img {
-    width: 80%;
-    height: auto;
 }
 
 .pet-index-item-link > p {
-    position: relative;
-    bottom: -200px;
+    padding: 10px 0;
+    width: 95%;
+    display: block;
+    margin: auto;
+}
 
-    // border: 1px solid;
+.pet-index-item-img {
+    display: block;
+    margin: auto;
+    width: 95%;
+    height: calc(width);
+    overflow: hidden;
+    align-items: center;
+
+    min-width: 200px;
+    padding-bottom: 15px;
 }
