@@ -7,7 +7,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 
 const users = require('./routes/api/users.js');
-// const pets = require('./routes/api/pets.js');
+const pets = require('./routes/api/pets.js');
+const reviews = require('./routes/api/reviews.js');
 // const carts = require('./routes/api/carts.js');
 
 if (process.env.NODE_ENV === 'production') {
@@ -31,7 +32,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api/users', users);
-// app.use('/api/pets', pets);
+app.use('/api/reviews', reviews);
+app.use('/api/pets', pets);
 // app.use('/api/carts', carts);
 
 const port = process.env.PORT || 5001;

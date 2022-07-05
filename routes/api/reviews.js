@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Review = require('../../models/Review');
+const Pet = require('../../models/Pet');
 const validateReviewInput = require('../../validation/reviews');
 
 router.get('/', (req, res) => {
@@ -30,7 +31,7 @@ router.get('/:id', (req, res) => {
         );
 });
 
-router.post('/',
+router.post('/:petId',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
       const { errors, isValid } = validateReviewInput(req.body);
@@ -38,14 +39,22 @@ router.post('/',
       if (!isValid) {
         return res.status(400).json(errors);
       }
-  
-      const newReview = new Review({
-        title: req.body.title,
-        text: req.body.text,
-        user: req.user.id
-      });
-  
-      newReview.save().then(review => res.json(review));
+
+      // const pet = Pet.findById(req.params.petId)
+    
+
+        const newReview = new Review({
+          title: req.body.title,
+          text: req.body.text,
+          user: req.user.id,
+          pet: req.params.petId
+        });
+    
+        newReview.save().then(review => res.json(review));
+
+      
+      // 62c460a1dd59da02b2395a27
+   
     }
 );
 
