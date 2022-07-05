@@ -1,14 +1,14 @@
-const path = require('path');
+// const path = require('path');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const db = require('./config/keys').mongoURI;
+const db = require('./config/keys.js').mongoURI;
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
-const users = require('./routes/api/users');
-const pets = require('./routes/api/pets');
-const carts = require('./routes/api/carts');
+const users = require('./routes/api/users.js');
+// const pets = require('./routes/api/pets.js');
+// const carts = require('./routes/api/carts.js');
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
@@ -29,10 +29,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api/users', users);
-app.use('/api/pets', pets);
-app.use('/api/carts', carts);
+// app.use('/api/pets', pets);
+// app.use('/api/carts', carts);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
