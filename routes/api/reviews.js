@@ -40,7 +40,7 @@ router.get('/pet/:pet_id', (req, res) => {
   );
 });
 
-router.post('/:pet_id',
+router.post('/pet/:pet_id',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
       const { errors, isValid } = validateReviewInput(req.body);

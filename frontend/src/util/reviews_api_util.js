@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 export const createReview = (petId,reviewData) => {
-    return axios.post(`/api/pets/${petId}`, reviewData);
+    return axios.post(`/api/reviews/pet/${petId}`, reviewData);
 };
   
-export const getAllReviewsForPet = (petId) => {
-    return axios.get(`/api/pets${petId}`);
+export const fetchAllReviewsForPet = (petId) => {
+    return axios.get(`/api/reviews/pet/${petId}`);
 };
