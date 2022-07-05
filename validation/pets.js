@@ -9,15 +9,15 @@ module.exports = function validatePetInput(data) {
   data.description = validText(data.description) ? data.description : '';
 
   if (!Validator.isLength(data.name, { min: 1, max: 50 })) {
-    errors.text = 'Pet name is too long!';
+    errors.text = 'Pet name must be between 1 and 50 characters!';
   }
 
-  if (!Validator.isLength(data.petType, { min: 3, max: 50 })) {
-    errors.text = 'PetType is too long!';
+  if (!Validator.isLength(data.petType, { min: 1, max: 50 })) {
+    errors.text = 'PetType must be between 1 and 50 characters!';
   }
 
   if (!Validator.isLength(data.description, { min: 5, max: 300 })) {
-    errors.text = 'Description is too long!';
+    errors.text = 'Description must be between 5 and 300 characters!';
   }
 
   if (Validator.isEmpty(data.name)) {
