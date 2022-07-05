@@ -1,0 +1,55 @@
+.pets-index-container {
+    margin: 0 auto;
+    width: 100%;
+    height: 100vh;
+    background-color: $white;
+
+    position: fixed;
+    top: 80px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.pets-index-content > h1 {
+    font-size: $title-font-size;
+    font-family: $main-font-family;
+}
+
+.pets-index-content > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.pets-index-content > ul > li {
+    width: 600px;
+    height: 300px;
+    
+    background-color: $theme;
+    margin: 25px;
+
+    box-sizing: border-box;
+    border: 1px dotted red;
+    padding: 20px;
+
+}
+
+.pet-index-item-link { 
+    color: $main-color;
+    font-family: $main-font-family;
+    font-size: 18px;
+
+    position: relative;
+}
+
+.pet-index-item-img {
+    width: 80%;
+    height: auto;
+}
+
+.pet-index-item-link > p {
+    position: relative;
+    bottom: -200px;
+
+    // border: 1px solid;
+}
