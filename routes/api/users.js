@@ -111,27 +111,27 @@ router.get(
   }
 );
 
-// Add to cart
-router.post('/cart', async (req, res) => {
-  const { petId, quantity, price } = req.body;
-  const userId = req.user.id;
-  try {
-    let cart = await Cart.findOne({ userId });
-    // if cart doesn't exist, create a new cart
-    if (!cart) {
-      const newCart = await Cart.create({
-        userId,
-        pets: [{ petId, name, quantity, price }],
-      });
-      return res.status(201).send(newCart);
-      // if cart exists, add pet to cart
-    } else {
-      cart.pets.push({ petId, name, quantity, price });
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).send('BROKEN');
-  }
-});
+// // Add to cart
+// router.post('/cart', async (req, res) => {
+//   const { petId, quantity, price } = req.body;
+//   const userId = req.user.id;
+//   try {
+//     let cart = await Cart.findOne({ userId });
+//     // if cart doesn't exist, create a new cart
+//     if (!cart) {
+//       const newCart = await Cart.create({
+//         userId,
+//         pets: [{ petId, name, quantity, price }],
+//       });
+//       return res.status(201).send(newCart);
+//       // if cart exists, add pet to cart
+//     } else {
+//       cart.pets.push({ petId, name, quantity, price });
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).send('BROKEN');
+//   }
+// });
 
 module.exports = router;
