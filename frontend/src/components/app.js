@@ -5,10 +5,12 @@ import { Switch, Route } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
 import SignupFormContainer from './session/signup_form_container';
 import PetsContainer from './pets/pet_container';
+import SplashPage from './splash/splash_page';
 
 const App = () => (
     <div>
         <NavBarContainer />
+        <AuthRoute exact path="/" component={SplashPage}/>
         <Switch>
             <Route path="/pets" component={PetsContainer} />
             <AuthRoute exact path='/signup' component={SignupFormContainer} />

@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { clearErrors } from '../../actions/session_actions';
 
 const LoginForm = (props) => {
+
+    const dispatch = useDispatch();
 
     const [state, setState] = useState({
         email: '',
         password: '',
         errors: {}
     });
+
+    useEffect(() => {
+        dispatch(clearErrors());
+    }, [dispatch])
 
     useEffect(() => {
         if (props.currentUser === true) {
@@ -35,11 +43,11 @@ const LoginForm = (props) => {
 
     const renderErrors = () => {
         return (
-            <ul>
+            <ul className="error-message-container">
                 {
                     Object.keys(state.errors).map((error, idx) => {
                         return (
-                            <li key={`error-${idx}`}>
+                            <li key={`error-${idx}`} className="error-messages">
                                 {state.errors[error]}
                             </li>
                         )
@@ -50,31 +58,25 @@ const LoginForm = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div>
+        <div className="session-form-container">
+            <form className="session-form" onSubmit={handleSubmit}>
+                <label className="session-label">Email:
                     <input type="text"
                         value={state.email}
                         onChange={update('email')}
-                        placeholder="Email"
                     />
-                    <br/>
+                </label>
+                <label className="session-label">Password:
                     <input type="password"
                         value={state.password}
                         onChange={update('password')}
-                        placeholder="Password"
                     />
-                    <br/>
-                    <input type="submit" value="Submit" />
-                    {renderErrors()}
-                </div>
+                </label>
+            <input className="session-submit" type="submit" value="Login" />
+            {renderErrors()}
             </form>
         </div>
     )
 }
 
-<<<<<<< HEAD
-export default withRouter(LoginForm);
-=======
 export default LoginForm;
->>>>>>> development-main
