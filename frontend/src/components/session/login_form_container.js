@@ -4,7 +4,8 @@ import LoginForm from './login_form';
 
 const mapStateToProps = (state) => {
   return {
-    errors: state.errors.session
+    errors: state.errors.session,
+    currentUser: state.session.user
   };
 };
 
@@ -14,4 +15,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginForm);

@@ -2,33 +2,43 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const NavBar = props => {
-     const logoutUser = e => {
+    const logoutUser = e => {
         e.preventDefault();
         props.logout();
-     }
+    }
 
-     const getLinks = () => {
+    const getLinks = () => {
         if (props.loggedIn) {
             return (
-                <div>
+                <div className="auth-links">
                     <button onClick={logoutUser}>Logout</button>
                     <Link to={'/cart'}>My Cart</Link>
                 </div>
             );
         } else {
             return (
-                <div>
+                <div className="unauth-links">
                     <Link to={'/signup'}>Signup</Link>
-                    <Link to={'/login'}>Login</Link>
                 </div>
             );
         }
-     }
+    }
+
+     
 
     return (
-        <div>
-            <h1>Dina-Dopt</h1>
-            { getLinks() }
+        <div className="nav-container">
+            <div className="nav-content">
+                <div className="about-container">
+                    <Link to="/about">About</Link>
+                </div>
+                <div className="title-container">
+                    <Link to="/">
+                        <h1>Dina-Dopt</h1>
+                    </Link>
+                </div>
+                {getLinks()}
+            </div>
         </div>
     )
 }

@@ -1,98 +1,90 @@
+import React, { useState, useEffect } from 'react';
 
-import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+const SignupForm = (props) => {
+    
+    const [state, setState] = useState({
+        email: '',
+        name: '',
+        password: '',
+        password2: '',
+        errors: {}
+    })
 
-class SignupForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      name: '',
-      password: '',
-      password2: '',
-      errors: {}
-    };
+    useEffect(() => {
+        if (props.signedIn === true) {
+            props.history.push('/login')
+        }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearedErrors = false;
-  }
+        setState(prevState => {
+            return { ...prevState, errors: props.errors }
+        })
+    }, [props.signedIn, props.errors, props.history])
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.signedIn === true) {
-      this.props.history.push('/login');
+    const update = (field) => {
+        return e => setState({ ...state, [field]: e.currentTarget.value })
     }
 
-    this.setState({errors: nextProps.errors})
-  }
-
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
-  }
-
-  handleSubmit(e) {
+  const nameSubmit = (e) => {
     e.preventDefault();
     let user = {
-      email: this.state.email,
-      name: this.state.name,
-      password: this.state.password,
-      password2: this.state.password2
+      email: state.email,
+      name: state.name,
+      password: state.password,
+      password2: state.password2
     };
 
-    this.props.signup(user, this.props.history); 
+    props.signup(user);
   }
 
-  renderErrors() {
-
-    return(
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
+  const renderErrors = () => {
+    return (
+        <ul>
+            {Object.keys(state.errors).map((error, i) => (
+                <li key={`error-${i}`} className="error-messages">
+                    {state.errors[error]}
+                </li>
+            ))}
+        </ul>
     );
   }
 
-  render() {
     return (
-      <div className="signup-form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="signup-form">
-            <br/>
+      <div className="signup-page-container">
+        <div className="signup-form-container">
+          <form className="signup-form" onSubmit={nameSubmit}>
+            <label className="signup-label">Email:
               <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                placeholder="Email"
+                id="email"
+                value={state.email}
+                onChange={update('email')}
               />
-            <br/>
+            </label>
+            <label className="signup-label">Name:
               <input type="text"
-                value={this.state.name}
-                onChange={this.update('name')}
-                placeholder="Name"
+                id="name"
+                value={state.name}
+                onChange={update('name')}
               />
-            <br/>
+            </label>
+            <label className="signup-label">Password:
               <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                placeholder="Password"
+                value={state.password}
+                onChange={update('password')}
               />
-            <br/>
+            </label>
+            <label className="signup-label">Confirm Password:
               <input type="password"
-                value={this.state.password2}
-                onChange={this.update('password2')}
-                placeholder="Confirm Password"
+                id="password2"
+                value={state.password2}
+                onChange={update('password2')}
               />
-            <br/>
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
-          </div>
-        </form>
+            </label>
+          <input className="signup-submit" type="submit" value="Submit" />
+          {renderErrors()}
+          </form>
+        </div>
       </div>
     );
-  }
 }
 
-export default withRouter(SignupForm);
+export default SignupForm;

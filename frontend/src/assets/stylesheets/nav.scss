@@ -1,0 +1,39 @@
+.nav-container {
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+    padding: 10px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-color: $theme;
+    color: white;
+
+    font-size: 30px;
+    font-family: 'Cabin Sketch', cursive;
+
+    button, a {
+        color: white;
+    }
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.title-container {
+
+    h1 {
+        font-size: 38px;
+    }
+}
