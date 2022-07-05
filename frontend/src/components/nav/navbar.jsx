@@ -11,7 +11,7 @@ const NavBar = props => {
         if (props.loggedIn) {
             return (
                 <div className="auth-links">
-                    <button onClick={logoutUser}>Logout</button>
+                    <button className="logout-button" onClick={logoutUser}>Logout</button>
                     <Link to={'/cart'}>My Cart</Link>
                 </div>
             );
@@ -23,8 +23,6 @@ const NavBar = props => {
             );
         }
     }
-
-     
 
     return (
         <div className="nav-container">

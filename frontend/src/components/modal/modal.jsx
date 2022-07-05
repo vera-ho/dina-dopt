@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
-import SignupFormContainer from '../session/signup_form_container';
 
 const Modal = ({modal, closeModal}) => {
 
@@ -10,9 +9,9 @@ const Modal = ({modal, closeModal}) => {
     }
     let component;
     switch (modal) {
-        case 'signup':
-            component = <SignupFormContainer />;
-            break;
+        // case 'signup':
+        //     component = <SignupFormContainer />;
+        //     break;
         default:
             return null;
     }
