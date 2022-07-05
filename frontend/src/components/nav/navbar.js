@@ -33,7 +33,9 @@ const NavBar = props => {
                     <Link to="/about">About</Link>
                 </div>
                 <div className="title-container">
-                    <h1>Dina-Dopt</h1>
+                    <Link to="/">
+                        <h1>Dina-Dopt</h1>
+                    </Link>
                 </div>
                 {getLinks()}
             </div>

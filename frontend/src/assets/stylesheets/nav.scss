@@ -4,9 +4,15 @@
     box-sizing: border-box;
     padding: 10px;
 
-    background-color: $brown;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background-color: $theme;
     color: white;
+
     font-size: 30px;
+    font-family: 'Cabin Sketch', cursive;
 
     button, a {
         color: white;
@@ -25,3 +31,9 @@
     padding: 10px;
 }
 
+.title-container {
+
+    h1 {
+        font-size: 38px;
+    }
+}

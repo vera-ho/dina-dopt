@@ -1,145 +1,76 @@
+import React, { useState, useEffect } from 'react';
 
-import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+const LoginForm = (props) => {
 
-class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
+    const [state, setState] = useState({
+        email: '',
+        password: '',
+        errors: {}
+    });
 
-    this.state = {
-      email: '',
-      password: '',
-      errors: {}
-    };
+    useEffect(() => {
+        if (props.currentUser === true) {
+            props.history.push('/tweets')
+        }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
-  }
+        setState(prevState => {
+            return { ...prevState, errors: props.errors }
+        })
+    }, [props.currentUser, props.errors, props.history])
 
-  // Once the user has been authenticated, redirect to the Tweets page
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-      this.props.history.push('/tweets');
+    const update = (field) => {
+        return e => setState({ ...state, [field]: e.currentTarget.value })
     }
 
-    // Set or clear errors
-    this.setState({errors: nextProps.errors})
-  }
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-  // Handle field updates (called in the render method)
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
-  }
+        let user = {
+            email: state.email,
+            password: state.password
+        };
 
-  // Handle form submission
-  handleSubmit(e) {
-    e.preventDefault();
+        props.login(user);
+    }
 
-    let user = {
-      email: this.state.email,
-      password: this.state.password
-    };
+    const renderErrors = () => {
+        return (
+            <ul>
+                {
+                    Object.keys(state.errors).map((error, idx) => {
+                        return (
+                            <li key={`error-${idx}`}>
+                                {state.errors[error]}
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        )
+    }
 
-    this.props.login(user); 
-  }
-
-  // Render the session errors if there are any
-  renderErrors() {
-    return(
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
-  render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                placeholder="Email"
-              />
-            <br/>
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                placeholder="Password"
-              />
-            <br/>
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
-          </div>
-        </form>
-      </div>
-    );
-  }
+        <div>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <input type="text"
+                        value={state.email}
+                        onChange={update('email')}
+                        placeholder="Email"
+                    />
+                    <br/>
+                    <input type="password"
+                        value={state.password}
+                        onChange={update('password')}
+                        placeholder="Password"
+                    />
+                    <br/>
+                    <input type="submit" value="Submit" />
+                    {renderErrors()}
+                </div>
+            </form>
+        </div>
+    )
 }
 
-// const LoginForm = props => {
-
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [errors, setErrors] = useState({});
-
-//   useEffect( () => {
-//     if(props.currentUser === true) {
-//       props.history.push('/tweets');
-//     }
-//     setErrors(props.errors);
-//   }, props.currentUser);
-
-//   const handleSubmit = e => {
-//     e.preventDefault();
-//     let user = {
-//       email: email,
-//       password: password
-//     }
-//     props.login(user);
-//   }
-
-//   const renderErrors = () => {
-//     return (
-//       <ul>
-//       {Object.keys(errors).map((error, i) => (
-//         <li key={`error-${i}`}>
-//           {errors[error]}
-//         </li>
-//       ))}
-//     </ul>
-//     )
-//   }
-
-//   return (
-//       <div>
-//         <form onSubmit={handleSubmit}>
-//           <div>
-//               <input type="text"
-//                 value={email}
-//                 onChange={ e => setEmail(e.target.value) }
-//                 placeholder="Email"
-//               />
-//             <br/>
-//               <input type="password"
-//                 value={password}
-//                 onChange={e => setPassword(e.target.value)}
-//                 placeholder="Password"
-//               />
-//             <br/>
-//             <input type="submit" value="Submit" />
-//             {renderErrors()}
-//           </div>
-//         </form>
-//       </div>
-//   )
-// }
-
-export default withRouter(LoginForm);
+export default LoginForm;
