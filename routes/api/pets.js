@@ -15,7 +15,12 @@ router.post('/', async (req, res) => {
     description,
     price,
   });
-  res.json(newPet);
+  //validate newPet
+  if (!newPet) {
+    res.status(400).json({ error: 'Error creating pet' });
+  } else {
+    res.json(newPet);
+  }
 });
 
 router.get('/:id', async (req, res) => {
@@ -25,3 +30,5 @@ router.get('/:id', async (req, res) => {
 });
 
 module.exports = router;
+
+
