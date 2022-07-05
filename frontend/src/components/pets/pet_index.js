@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { receiveAllPets, receivePetErrors } from "../../actions/pet_actions";
+import { receiveAllPets } from "../../actions/pet_actions";
 import { getPets } from "../../util/pet_util";
 
 const PetsIndex = props => {
@@ -19,7 +19,7 @@ const PetsIndex = props => {
     if(!pets) return null;
 
     const petItems = pets.map( pet => (
-        <li>
+        <li className="pet-index-item">
             <img src="" alt={pet.name} />
             <p>Pet Name: {pet.name}</p>
             <p>Pet Type: {pet.petType}</p>
