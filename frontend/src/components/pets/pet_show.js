@@ -29,7 +29,6 @@ const PetsShow = props => {
         return null
     } else { 
 
-        console.log(pet[0].name)
     return (
         <div className="pets-show-container">
             <div className="pets-show-content">
