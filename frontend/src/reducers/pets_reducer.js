@@ -6,10 +6,10 @@ const petsReducer = (state = {}, action) => {
     
     switch(action.type) {
         case RECEIVE_ALL_PETS:
-            Object.assign(nextState, action.pets);
+            Object.assign(nextState, action.pets.data);
             return nextState;
         case RECEIVE_PET:
-            nextState[action.pet.id] = action.pet;
+            nextState[action.pet.id] = action.pet.data;
             return nextState;
         default:
             return state;

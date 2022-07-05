@@ -4,7 +4,7 @@ import PetsIndex from "./pet_index";
 
 const mSTP = state => {
     return {
-        pets: state.pets
+        pets: Object.values(state.pets)
     }
 }
 

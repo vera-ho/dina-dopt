@@ -5,10 +5,12 @@ export const RECEIVE_PET = "RECEIVE_PET";
 export const REMOVE_PET = "REMOVE_PET";
 export const RECEIVE_PET_ERRORS = "RECEIVE_PET_ERRORS";
 
-export const receiveAllPets = pets => ({
-    type: RECEIVE_ALL_PETS,
-    pets
-})
+export const receiveAllPets = pets => {
+    return {
+        type: RECEIVE_ALL_PETS,
+        pets
+    }
+}
 
 export const receiveSinglePet = pet => {
     return {
