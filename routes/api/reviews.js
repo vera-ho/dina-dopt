@@ -31,7 +31,16 @@ router.get('/:id', (req, res) => {
         );
 });
 
-router.post('/:petId',
+router.get('/pet/:pet_id', (req, res) => {
+  Review.find({pet: req.params.pet_id})
+      .then(reviews => res.json(reviews))
+      .catch(err =>
+          res.status(404).json({ noreviewsfound: 'No reviews found for that pet' }
+      )
+  );
+});
+
+router.post('/:pet_id',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
       const { errors, isValid } = validateReviewInput(req.body);
@@ -47,7 +56,7 @@ router.post('/:petId',
           title: req.body.title,
           text: req.body.text,
           user: req.user.id,
-          pet: req.params.petId
+          pet: req.params.pet_id
         });
     
         newReview.save().then(review => res.json(review));
