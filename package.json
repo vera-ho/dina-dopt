@@ -18,5 +18,18 @@
   "bugs": {
     "url": "https://github.com/vh71886/dina-dopt/issues"
   },
-  "homepage": "https://github.com/vh71886/dina-dopt#readme"
+  "homepage": "https://github.com/vh71886/dina-dopt#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.2",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
 }
