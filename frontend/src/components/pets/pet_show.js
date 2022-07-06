@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { receiveSinglePet } from "../../actions/pet_actions";
 import { getPet } from "../../util/pet_util";
+import { fetchAllReviewsForPet } from "../../util/reviews_api_util";
 import { useLocation } from 'react-router-dom';
+import { receiveAllReviewsForPet } from "../../actions/review_actions";
 
 const PetShow = props => {
     const dispatch = useDispatch();
@@ -11,6 +13,7 @@ const PetShow = props => {
 
     useEffect( () => {
         fetchPet();
+        fetchPetReviews();
     }, []);
 
     const fetchPet = async () => {
@@ -19,7 +22,8 @@ const PetShow = props => {
     }
 
     const fetchPetReviews = async () => {
-        let reviews = await getReviews();
+        let reviews = await fetchAllReviewsForPet();
+        dispatch(receiveAllReviewsForPet(reviews));
     }
 
     const image = "https://cdn.discordapp.com/attachments/862515957842706475/994299207986974820/allosaurus-paleorex-full.jpeg";
