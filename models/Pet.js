@@ -19,6 +19,9 @@ const PetSchema = new Schema(
       type: Number,
       default: 0,
     },
+    image_url: {
+      type: String,
+    }
   },
   {
     timestamps: true,
