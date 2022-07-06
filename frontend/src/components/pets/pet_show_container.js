@@ -11,12 +11,13 @@ const mSTP = (state, ownProps) => {
         }
     });
 
+    let reviews = Object.values(state.entities.reviews);
+    reviews = reviews.filter( review => review.pet === ownProps.match.params.pet_id)
+
     return {
-        pet: pets[petIdx]
+        pet: pets[petIdx],
+        reviews: reviews
     }
-    // return {
-    //     pet: Object.values(state.entities.pets)
-    // }
 }
 
 export default connect(mSTP)(PetShow);

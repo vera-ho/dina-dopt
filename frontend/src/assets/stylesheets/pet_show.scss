@@ -14,12 +14,6 @@
     }
 }
 
-.pet-show-content-left > span {
-    font-size: 1.5rem;
-    font-family: $main-font-family;
-    color: $main-color;
-}
-
 .pet-show-content-left {
     display: flex;
     flex-direction: column;
@@ -32,26 +26,10 @@
     }
 }
 
-.pet-show-content-right {
-    width: 40%;
-    padding-top: 80px;
-    color: $main-color;
-    font-family: $main-font-family;
-    font-size: 18px;
-
-    box-sizing: border-box;
-
-    @media screen and (max-width: 1000px) {
-        width: 100%;
-        padding-top: 20px;
-    }
-}
-
 .pet-show-image-container {
     width: 100%;
     display: flex;
     justify-content: center;
-
     padding-bottom: 10px;
 }
 
@@ -76,4 +54,31 @@
     min-width: 200px;
     border-radius: 15px;
     border: 2px dashed white;
+}
+
+.pet-show-content-right {
+    width: 40%;
+
+    @media screen and (max-width: 1000px) {
+        width: 100%;
+    }
+}
+
+.pet-show-title > h1 {
+    color: $main-color;
+    font-family: $main-font-family;
+    font-size: $title-font-size;
+    padding-bottom: 15px;
+}
+
+.pet-show-details > p {
+    color: $main-color;
+    font-family: $main-font-family;
+    font-size: 20px;
+    line-height: 1.2rem;
+    padding-bottom: 5px;
+}
+
+.pet-show-details > p:first-child {
+    text-transform: capitalize;
 }
