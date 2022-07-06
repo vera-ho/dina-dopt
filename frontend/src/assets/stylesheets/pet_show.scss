@@ -56,29 +56,47 @@
     border: 2px dashed white;
 }
 
+// need help to center text when screen is smaller
 .pet-show-content-right {
     width: 40%;
 
     @media screen and (max-width: 1000px) {
-        width: 100%;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }
 
+// need help to center text when screen is smaller
 .pet-show-title > h1 {
     color: $main-color;
     font-family: $main-font-family;
     font-size: $title-font-size;
     padding-bottom: 15px;
+
+    @media screen and (max-width: 1000px) {
+        width: 90%;
+    }
 }
 
+// need help to center text when screen is smaller
 .pet-show-details > p {
     color: $main-color;
     font-family: $main-font-family;
     font-size: 20px;
-    line-height: 1.2rem;
     padding-bottom: 5px;
+
+    @media screen and (max-width: 1000px) {
+        width: 90%;
+    }
 }
 
 .pet-show-details > p:first-child {
     text-transform: capitalize;
+}
+
+.add-pet-review-form {
+    display: flex;
+    flex-direction: column;
 }

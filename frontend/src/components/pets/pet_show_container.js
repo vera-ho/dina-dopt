@@ -16,7 +16,8 @@ const mSTP = (state, ownProps) => {
 
     return {
         pet: pets[petIdx],
-        reviews: reviews
+        reviews: reviews,
+        user: state.session.user
     }
 }
 
