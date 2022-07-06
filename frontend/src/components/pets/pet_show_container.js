@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import { requestSinglePet } from "../../actions/pet_actions";
 import PetShow from "./pet_show";
 
 const mSTP = (state, ownProps) => {
@@ -12,7 +11,6 @@ const mSTP = (state, ownProps) => {
         }
     });
 
-    console.log(pets[petIdx]);
     return {
         pet: pets[petIdx]
     }
@@ -21,10 +19,4 @@ const mSTP = (state, ownProps) => {
     // }
 }
 
-const mDTP = dispatch => {
-    return {
-        requestSinglePet: (petId) => dispatch(requestSinglePet(petId)),
-    }
-}
-
-export default connect(mSTP, mDTP)(PetShow);
+export default connect(mSTP)(PetShow);
