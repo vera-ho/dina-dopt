@@ -18,6 +18,10 @@ const PetShow = props => {
         dispatch(receiveSinglePet(pet));
     }
 
+    // const image = "https://cdn.discordapp.com/attachments/862515957842706475/994299207986974820/allosaurus-paleorex-full.jpeg";
+    const image = "https://cdn.discordapp.com/attachments/862515957842706475/994299208880369684/bambiraptor-paleorex-full.jpeg"
+    // const image = 'https://cdn.discordapp.com/attachments/862515957842706475/994301131951968338/hamipterus-paleorex-full.jpeg'
+
     if(!pet) {
         return null
     } else { 
@@ -25,15 +29,31 @@ const PetShow = props => {
             <div className="pet-show-container">
                 <div className="pet-show-content">
                     <div className="pet-show-content-left">
-                        <h1>{pet.name}</h1>
-                        <img src="https://dina-dopt-seed.s3.amazonaws.com/compressed-full+2/bambiraptor-alex-shaffer-full.jpg" 
-                            alt={pet.name} className="pet-index-item-img" />
+                        <div className="pet-show-image-container">
+                            {/* <img src={pet.image_url} */}
+                            <img src={image}
+                                alt={pet.name} className="pet-show-image" />
+                        </div>
+                        <div className="pet-show-artist-credit">
+                            <div className="pet-show-artist-inner">
+                                <span>Artwork Credit: 
+                                    <a href="https://www.instagram.com/paleorex/"> @paleorex</a>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                     <div className="pet-show-content-right">
+                    <h1>{pet.name}</h1>
+
                         <p>Type: {pet.petType}</p>
                         <p>Price: {pet.price} DinoCoins</p>
                         <p>Description: {pet.description}</p>
+                        
                     </div>
+                </div>
+
+                <div className="pet-reviews-container">
+
                 </div>
             </div>
         )
