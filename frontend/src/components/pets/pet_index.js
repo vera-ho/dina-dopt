@@ -22,10 +22,12 @@ const PetsIndex = props => {
     const petItems = pets.map( (pet, idx) => (
         <li className="pet-index-item" key={idx}>
             <Link to={`/pets/${pet._id}`} className="pet-index-item-link">
-                <img src="https://dina-dopt-seed.s3.amazonaws.com/compressed-full+2/bambiraptor-alex-shaffer-full.jpg" 
+                <img src={pet.image_url}
                     alt={pet.name} className="pet-index-item-img" />
-                <p>Pet Name: {pet.name}</p>
-                <p>Pet Type: {pet.petType}</p>
+                <div className="pet-index-item-info">
+                    <p>Pet Name: {pet.name}</p>
+                    <p>Pet Type: {pet.petType}</p>
+                </div>
             </Link>
         </li>
     ));
