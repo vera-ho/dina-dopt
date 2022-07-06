@@ -76,15 +76,15 @@ const PetShow = props => {
                         </div>
                     </div>
                     <div className="pet-show-content-right">
-                        <div className="pet-show-title">
-                            <h1>{pet.name}</h1>
-                        </div>
-                        <div className="pet-show-details">
-                            <p>Type: {pet.petType}</p>
-                            <p>Price: {pet.price} DinoCoins</p>
-                            <p>Description: {pet.description}</p>
-                            {/* <p>Click for reviews</p> */}
-                        </div>    
+                        <div className="pet-show-details-wrapper">
+                            <div className="pet-show-details">
+                                <h1>{pet.name}</h1>
+                                <p>Type: {pet.petType}</p>
+                                <p>Price: {pet.price} DinoCoins</p>
+                                <p>Description: {pet.description}</p>
+                                {/* <p>Click for reviews</p> */}
+                            </div> 
+                        </div>  
                     </div>
                 </div>
 

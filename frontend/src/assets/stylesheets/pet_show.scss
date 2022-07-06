@@ -61,11 +61,16 @@
     width: 40%;
 
     @media screen and (max-width: 1000px) {
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        width: 100%;
+        
     }
+}
+
+.pet-show-details-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 // need help to center text when screen is smaller
@@ -81,7 +86,7 @@
 }
 
 // need help to center text when screen is smaller
-.pet-show-details > p {
+.pet-show-details {
     color: $main-color;
     font-family: $main-font-family;
     font-size: 20px;
