@@ -5,7 +5,7 @@
     background-image: url("https://dina-dopt-seed.s3.amazonaws.com/wallhaven-2koq9x_1920x1080-full.png");
     background-size: cover;
 
-    font-family: 'Cabin Sketch', cursive;
+    font-family: $main-font-family;
     font-size: 20px;
 }
 
@@ -60,7 +60,7 @@
     height: 40px;
     width: 100px;
 
-    font-family: 'Cabin Sketch', cursive;
+    font-family: $main-font-family;
 
     color: white;
     border: 1px solid $charcoal;
@@ -76,7 +76,6 @@
 
 .session-submit:hover {
     background-color: $charcoal-hover;
-
 }
 
 .error-message-container {
