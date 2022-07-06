@@ -7,7 +7,7 @@
 .pet-show-content {
     display: flex;
     flex-direction: row;
-    padding-top: 35px;
+    padding: 35px 0px;
 
     @media screen and (max-width: 1000px) {
         flex-direction: column;
@@ -62,7 +62,6 @@
 
     @media screen and (max-width: 1000px) {
         width: 100%;
-        
     }
 }
 
@@ -98,9 +97,4 @@
 
 .pet-show-details > p:first-child {
     text-transform: capitalize;
-}
-
-.add-pet-review-form {
-    display: flex;
-    flex-direction: column;
 }

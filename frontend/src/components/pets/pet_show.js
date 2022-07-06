@@ -30,7 +30,6 @@ const PetShow = props => {
     }
 
     const handleSubmit = e => {
-        debugger
         e.preventDefault();
         let review = {
             user: user.id,
@@ -51,8 +50,6 @@ const PetShow = props => {
         )
     })
 
-    // const image = "https://cdn.discordapp.com/attachments/862515957842706475/994299207986974820/allosaurus-paleorex-full.jpeg";
-    // const image = "https://cdn.discordapp.com/attachments/862515957842706475/994299208880369684/bambiraptor-paleorex-full.jpeg"
     const image = 'https://cdn.discordapp.com/attachments/862515957842706475/994301131951968338/hamipterus-paleorex-full.jpeg'
 
     if(!pet) {
