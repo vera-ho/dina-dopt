@@ -27,7 +27,6 @@ router.post(
     const { petId } = req.body;
     const user = req.user.id;
     const cart = await Cart.find({ userId: user.id });
-    // cart = cart[0];
     let pet = Pet.findById(petId);
     let petDetails = {
       petId: petId,
