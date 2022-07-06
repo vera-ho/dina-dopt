@@ -12,9 +12,9 @@
     color: white;
 
     font-size: 30px;
-    font-family: 'Cabin Sketch', cursive;
+    font-family: $main-font-family;
 
-    button, a {
+    a {
         color: white;
     }
 }
@@ -32,8 +32,36 @@
 }
 
 .title-container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 
     h1 {
         font-size: 38px;
     }
 }
+
+.auth-links {
+    width: 250px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    button {
+        color: white;
+        font-family: 'Cabin Sketch', cursive;
+    
+        background-color: $theme;
+        outline: none;
+        border: none;
+    
+        font-size: inherit;
+    }
+}
+
+/* CART SIDEBAR */
+
+
+

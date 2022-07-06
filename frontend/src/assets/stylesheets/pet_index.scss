@@ -1,0 +1,69 @@
+.pets-index-container {
+    height: 100vh;
+    max-width: 80%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 100px 20px;
+}
+
+.pets-index-content > h1 {
+    font-size: $title-font-size;
+    font-family: $main-font-family;
+}
+
+.pets-index-content > ul {
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: space-evenly;
+    // justify-content: flex-start;
+    // flex-wrap: wrap;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+     
+    // add @media
+    @media screen and (max-width: 1280px) {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    @media screen and (max-width: 860px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.pets-index-content > ul > li {
+    background-color: $theme;
+    margin: 25px;
+
+    box-sizing: border-box;
+    border: 5px dashed $charcoal;
+    padding: 20px;
+
+}
+
+.pet-index-item-link { 
+    color: $main-color;
+    font-family: $main-font-family;
+    font-size: 18px;
+}
+
+.pet-index-item-link > p {
+    padding: 10px 0;
+    width: 95%;
+    display: block;
+    margin: auto;
+}
+
+.pet-index-item-img {
+    display: block;
+    margin: auto;
+    width: 95%;
+    height: calc(width);
+    overflow: hidden;
+    align-items: center;
+
+    min-width: 200px;
+    padding-bottom: 15px;
+}

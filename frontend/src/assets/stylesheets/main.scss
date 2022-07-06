@@ -1,8 +1,14 @@
 @import './reset.scss';
 @import './variables.scss';
 
+@import './splash.scss';
 @import './nav.scss';
-@import './session_forms.scss';
+@import './session_form.scss';
+
+
+@import './cart_sidebar.scss';
+@import './session_form.scss';
+@import './pet_index.scss';
 
 .app-content {
     padding-top: 80px;

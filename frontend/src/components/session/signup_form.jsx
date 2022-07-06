@@ -1,28 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { clearErrors } from '../../actions/session_actions';
 
 const SignupForm = (props) => {
-    
-    const [state, setState] = useState({
-        email: '',
-        name: '',
-        password: '',
-        password2: '',
-        errors: {}
-    })
 
-    useEffect(() => {
-        if (props.signedIn === true) {
-            props.history.push('/login')
-        }
+  const dispatch = useDispatch();
+  
+  const [state, setState] = useState({
+      email: '',
+      name: '',
+      password: '',
+      password2: '',
+      errors: {}
+  })
 
-        setState(prevState => {
-            return { ...prevState, errors: props.errors }
-        })
-    }, [props.signedIn, props.errors, props.history])
+  useEffect(() => {
+    dispatch(clearErrors());
+  }, [dispatch])
 
-    const update = (field) => {
-        return e => setState({ ...state, [field]: e.currentTarget.value })
-    }
+  useEffect(() => {
+      if (props.signedIn === true) {
+          props.history.push('/login')
+      }
+
+      setState(prevState => {
+          return { ...prevState, errors: props.errors }
+      })
+  }, [props.signedIn, props.errors, props.history])
+
+  const update = (field) => {
+      return e => setState({ ...state, [field]: e.currentTarget.value })
+  }
 
   const nameSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +46,7 @@ const SignupForm = (props) => {
 
   const renderErrors = () => {
     return (
-        <ul>
+        <ul className="error-message-container">
             {Object.keys(state.errors).map((error, i) => (
                 <li key={`error-${i}`} className="error-messages">
                     {state.errors[error]}
@@ -50,36 +58,33 @@ const SignupForm = (props) => {
 
     return (
       <div className="signup-page-container">
-        <div className="signup-form-container">
-          <form className="signup-form" onSubmit={nameSubmit}>
-            <label className="signup-label">Email:
+        <div className="session-form-container">
+          <form className="session-form" onSubmit={nameSubmit}>
+            <label className="session-label">Email:
               <input type="text"
-                id="email"
                 value={state.email}
                 onChange={update('email')}
               />
             </label>
-            <label className="signup-label">Name:
+            <label className="session-label">Name:
               <input type="text"
-                id="name"
                 value={state.name}
                 onChange={update('name')}
               />
             </label>
-            <label className="signup-label">Password:
+            <label className="session-label">Password:
               <input type="password"
                 value={state.password}
                 onChange={update('password')}
               />
             </label>
-            <label className="signup-label">Confirm Password:
+            <label className="session-label">Confirm Password:
               <input type="password"
-                id="password2"
                 value={state.password2}
                 onChange={update('password2')}
               />
             </label>
-          <input className="signup-submit" type="submit" value="Submit" />
+          <input className="session-submit" type="submit" value="Submit" />
           {renderErrors()}
           </form>
         </div>

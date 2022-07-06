@@ -20,32 +20,31 @@ router.get('/', async (req, res) => {
 //   res.json(newPet);
 // });
 
-router.post('/',
-    passport.authenticate('jwt', { session: false }),
-    (req, res) => {
-      const { errors, isValid } = validatePetInput(req.body);
-  
-      if (!isValid) {
-        return res.status(400).json(errors);
-      }
+router.post(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validatePetInput(req.body);
 
-      // const pet = Pet.findById(req.params.petId)
-
-
-        const newPet = new Pet({
-        name: req.body.name,
-        petType: req.body.petType,
-        description: req.body.description, 
-        price: req.body.price
-        });
-    
-        newPet.save().then(pet => res.json(pet));
-
-
-      // 62c460a1dd59da02b2395a27
+    if (!isValid) {
+      return res.status(400).json(errors);
     }
-);
 
+    // const pet = Pet.findById(req.params.petId)
+
+    const newPet = new Pet({
+      name: req.body.name,
+      petType: req.body.petType,
+      description: req.body.description,
+      price: req.body.price,
+      image_url: req.body.image_url,
+    });
+
+    newPet.save().then((pet) => res.json(pet));
+
+    // 62c460a1dd59da02b2395a27
+  }
+);
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
