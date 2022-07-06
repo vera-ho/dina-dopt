@@ -12,6 +12,7 @@ const App = () => (
         <NavBarContainer />
         <AuthRoute exact path="/" component={SplashPage} />
         <Switch>
+            {/* <ProtectedRoute path="/pets/:petId" component={PetDetailsContainer} /> */}
             <ProtectedRoute path="/pets" component={PetsContainer} />
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
         </Switch>
