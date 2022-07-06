@@ -1,0 +1,35 @@
+.pet-show-container {
+    border: 1px dashed greenyellow;
+    background-color: $light-green;
+    height: 100vh;
+}
+
+.pet-show-content {
+    border: 1px dashed palevioletred;
+
+    display: flex;
+    flex-direction: row;
+
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+    }
+}
+
+.pet-show-content-left > h1 {
+    font-size: $title-font-size;
+    font-family: $main-font-family;
+    color: $main-color;
+}
+
+.pet-show-content-left {
+    width: 60%;
+
+}
+
+.pet-show-content-right {
+    width: 40%;
+    padding-top: 40px;
+    color: $main-color;
+    font-family: $main-font-family;
+    font-size: 16px;
+}

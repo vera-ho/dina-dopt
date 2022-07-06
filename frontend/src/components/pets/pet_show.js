@@ -22,10 +22,10 @@ const PetShow = props => {
         return null
     } else { 
         return (
-            <div className="pets-show-container">
-                <div className="pets-show-content">
-                    <h1>{pet.name}</h1>
+            <div className="pet-show-container">
+                <div className="pet-show-content">
                     <div className="pet-show-content-left">
+                        <h1>{pet.name}</h1>
                         <img src="https://dina-dopt-seed.s3.amazonaws.com/compressed-full+2/bambiraptor-alex-shaffer-full.jpg" 
                             alt={pet.name} className="pet-index-item-img" />
                     </div>
@@ -34,7 +34,6 @@ const PetShow = props => {
                         <p>Price: {pet.price} DinoCoins</p>
                         <p>Description: {pet.description}</p>
                     </div>
-
                 </div>
             </div>
         )
