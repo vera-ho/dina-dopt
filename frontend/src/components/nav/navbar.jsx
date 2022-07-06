@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import CartSidebar from '../cart/cart_sidebar';
 
 const NavBar = props => {
+
     const logoutUser = e => {
         e.preventDefault();
         props.logout();
+    }
+
+    const handleOpenCartSidebar = (e) => {
+        e.preventDefault();
+
+        const cartSidebar = document.getElementById("cart-sidebar-container")
+        cartSidebar.classList.add('active')
     }
 
     const getLinks = () => {
@@ -12,7 +21,8 @@ const NavBar = props => {
             return (
                 <div className="auth-links">
                     <button className="logout-button" onClick={logoutUser}>Logout</button>
-                    <Link to={'/cart'}>My Cart</Link>
+                    <button onClick={handleOpenCartSidebar}>My Cart</button>
+                    <CartSidebar />
                 </div>
             );
         } else {

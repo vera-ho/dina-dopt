@@ -19,17 +19,6 @@
     }
 }
 
-.logout-button {
-    color: white;
-    font-family: 'Cabin Sketch', cursive;
-
-    background-color: $theme;
-    outline: none;
-    border: none;
-
-    font-size: inherit;
-}
-
 .nav-content {
     display: flex;
     justify-content: space-between;
@@ -59,6 +48,17 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    button {
+        color: white;
+        font-family: 'Cabin Sketch', cursive;
+    
+        background-color: $theme;
+        outline: none;
+        border: none;
+    
+        font-size: inherit;
+    }
 }
 
 /* CART SIDEBAR */
