@@ -12,7 +12,7 @@ const App = () => (
         <NavBarContainer />
         <AuthRoute exact path="/" component={SplashPage}/>
         <Switch>
-            <Route path="/pets" component={PetsContainer} />
+            <ProtectedRoute exact path="/pets" component={PetsContainer} />
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
         </Switch>
     </div>
