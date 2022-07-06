@@ -1,0 +1,51 @@
+.modal-background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+#cart-sidebar-container {
+    position: absolute;
+    top: 0;
+    right: -400px;
+
+    height: 100vh;
+    width: 400px;
+
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 2px 10px;
+
+    transition: 0.4s;
+}
+
+#cart-sidebar-container.active {
+    right: 0;
+}
+
+.sidebar-close-header {
+    height: 70px;
+
+    .close-sidebar-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 80px;
+
+        height: 100%;
+        width: 70px;
+        padding: 2px;
+
+        border: 1px solid black;
+        background-color: white;
+        color: black;
+    }
+
+    .close-sidebar-button:hover {
+        background-color: lightblue;
+    }
+}

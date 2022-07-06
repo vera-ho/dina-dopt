@@ -10,9 +10,9 @@ import SplashPage from './splash/splash_page';
 const App = () => (
     <div>
         <NavBarContainer />
-        <AuthRoute exact path="/" component={SplashPage}/>
+        <AuthRoute exact path="/" component={SplashPage} />
         <Switch>
-            <ProtectedRoute exact path="/pets" component={PetsContainer} />
+            <ProtectedRoute path="/pets" component={PetsContainer} />
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
         </Switch>
     </div>
