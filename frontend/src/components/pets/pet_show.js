@@ -25,15 +25,16 @@ const PetShow = props => {
             <div className="pets-show-container">
                 <div className="pets-show-content">
                     <h1>{pet.name}</h1>
-                    <ul>
-                        <li className="pet-show-item">
+                    <div className="pet-show-content-left">
                         <img src="https://dina-dopt-seed.s3.amazonaws.com/compressed-full+2/bambiraptor-alex-shaffer-full.jpg" 
                             alt={pet.name} className="pet-index-item-img" />
+                    </div>
+                    <div className="pet-show-content-right">
                         <p>Type: {pet.petType}</p>
                         <p>Price: {pet.price} DinoCoins</p>
                         <p>Description: {pet.description}</p>
-                        </li>
-                    </ul>
+                    </div>
+
                 </div>
             </div>
         )
