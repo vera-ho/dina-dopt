@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { requestAllPets } from "../../actions/pet_actions";
+import { fetchAllReviews } from "../../actions/review_actions";
 import PetsIndex from "./pet_index";
 
 const mSTP = state => {
@@ -11,6 +12,7 @@ const mSTP = state => {
 const mDTP = dispatch => {
     return {
         requestAllPets: () => dispatch(requestAllPets()),
+        fetchAllReviews: () => dispatch(fetchAllReviews()),
     }
 }
 

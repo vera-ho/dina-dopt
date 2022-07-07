@@ -37,3 +37,9 @@ export const fetchAllReviewsForPet = (petId) => dispatch => (
         .then((reviews) => (dispatch(receiveAllReviewsForPet(reviews))), 
         err => (dispatch(receiveErrors(err.response.data))))
 );
+
+export const fetchAllReviews = () => dispatch => (
+    ReviewUtil.fetchAllReviews()
+        .then((reviews) => (dispatch(receiveAllReviewsForPet(reviews))), 
+        err => (dispatch(receiveErrors(err.response.data))))
+);

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { receiveSinglePet } from "../../actions/pet_actions";
 import { getPet } from "../../util/pet_util";
-import { createReview, fetchAllReviewsForPet } from "../../util/reviews_api_util";
+import { createReview, fetchAllReviewsForPet, fetchAllReviews } from "../../util/reviews_api_util";
 import { fetchAllUsers } from "../../util/user_api_util";
 import { useLocation } from 'react-router-dom';
-import { receiveAllReviewsForPet } from "../../actions/review_actions";
+import { receiveAllReviewsForPet , receiveReview } from "../../actions/review_actions";
 import { receiveAllUsers } from "../../actions/user_actions";
 
 
@@ -33,6 +33,11 @@ const PetShow = props => {
         dispatch(receiveAllReviewsForPet(reviews));
     }
 
+    // const fetchPetReviews = async () => {
+    //     let reviews = await fetchAllReviews();
+    //     dispatch(receiveAllReviewsForPet(reviews));
+    // }
+
     const fetchUsers = async () => {
         let users = await fetchAllUsers();
         dispatch(receiveAllUsers(users));
@@ -48,7 +53,6 @@ const PetShow = props => {
         }
         createReview(pet._id, review)
         .then( () => fetchPetReviews() )
-        
         // window.location.reload()
 
     }

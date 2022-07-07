@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { receiveAllPets } from "../../actions/pet_actions";
 import { getPets } from "../../util/pet_util";
+import { fetchAllReviews } from "../../util/reviews_api_util";
+import { receiveAllReviewsForPet } from "../../actions/review_actions";
 import { Link } from "react-router-dom";
 
 const PetsIndex = props => {
@@ -10,11 +12,17 @@ const PetsIndex = props => {
 
     useEffect( () => {
         fetchPets();
+        fetchReviews();
     }, []);
 
     const fetchPets = async () => {
         let pets = await getPets();
         dispatch(receiveAllPets(pets));
+    }
+
+    const fetchReviews = async () => {
+        let reviews = await fetchAllReviews();
+        dispatch(receiveAllReviewsForPet(reviews));
     }
 
     if(!pets) return null;
