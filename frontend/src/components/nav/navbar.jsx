@@ -22,7 +22,6 @@ const NavBar = props => {
                 <div className="auth-links">
                     <button className="logout-button" onClick={logoutUser}>Logout</button>
                     <button onClick={handleOpenCartSidebar}>My Cart</button>
-                    <CartSidebar />
                 </div>
             );
         } else {
@@ -35,18 +34,21 @@ const NavBar = props => {
     }
 
     return (
-        <div className="nav-container">
-            <div className="nav-content">
-                <div className="about-container">
-                    <Link to="/about">About</Link>
+        <div className="nav-sidebar-container">
+            <div className="nav-container">
+                <div className="nav-content">
+                    <div className="about-container">
+                        <Link to="/about">About</Link>
+                    </div>
+                    <div className="title-container">
+                        <Link to="/">
+                            <h1>Dina-Dopt</h1>
+                        </Link>
+                    </div>
+                    {getLinks()}
                 </div>
-                <div className="title-container">
-                    <Link to="/">
-                        <h1>Dina-Dopt</h1>
-                    </Link>
-                </div>
-                {getLinks()}
             </div>
+            <CartSidebar />
         </div>
     )
 }
