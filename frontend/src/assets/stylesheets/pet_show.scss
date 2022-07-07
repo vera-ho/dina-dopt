@@ -1,7 +1,6 @@
 .pet-show-container {
     background-color: $theme-light;
     padding: 80px 200px 0px;
-    // height: calc(100vh - 80px);
     min-height: calc(100vh - 80px);
 
     @media screen and (max-width: 1440px) {

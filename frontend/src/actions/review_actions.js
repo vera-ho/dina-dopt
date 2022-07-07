@@ -1,7 +1,7 @@
 import * as ReviewUtil from '../util/reviews_api_util';
 
 export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
-export const RECEIVE_ALL_REVIEWS_FOR_PET = "RECEIVE_ALL_REVIEWS_FOR_PET ";
+export const RECEIVE_ALL_REVIEWS_FOR_PET = "RECEIVE_ALL_REVIEWS_FOR_PET";
 export const RECEIVE_REVIEW_ERRORS = "RECEIVE_REVIEW_ERRORS";
 
 
@@ -13,6 +13,11 @@ export const receiveReview = review => ({
 export const receiveAllReviewsForPet = (reviews) => ({
     type: RECEIVE_ALL_REVIEWS_FOR_PET,
     reviews
+});
+
+export const receiveReviewUser = (reviewUser) => ({
+    type: RECEIVE_ALL_REVIEWS_FOR_PET,
+    reviewUser
 });
   
 export const receiveErrors = errors => ({
