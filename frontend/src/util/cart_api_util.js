@@ -7,7 +7,7 @@ export const fetchCart = () => {
 export const addToCart = (petId) => {
   return axios({
     url: "/api/cart",
-    method: 'POST',
+    method: 'PATCH',
     data: {
       petId: petId
     }

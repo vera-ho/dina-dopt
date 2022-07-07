@@ -13,6 +13,19 @@ export const filterAllPetsByType = (state, petType) => {
     return arr.reverse()
 }
 
+export const cartItemsArray = (state) => {
+    let result = [];
+
+    if (!state.entities.cart?.items) {
+        return null
+    }
+    const cartItems = state.entities.cart.items;
+    cartItems.forEach(item => {
+        result.push(item.petId)
+    })
+    return result;
+}
+
 
 
 // export const selectAllPets = (state) => {
