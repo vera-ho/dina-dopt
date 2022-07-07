@@ -3,7 +3,6 @@ import { fetchCart, createCart } from '../../util/cart_api_util';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Cart = (props) => {
-  const match = useRouteMatch();
   const dispatch = useDispatch();
 
   useEffect(() => {
