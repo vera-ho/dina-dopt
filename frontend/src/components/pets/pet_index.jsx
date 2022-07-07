@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { receiveAllPets } from "../../actions/pet_actions";
 import { getPets } from "../../util/pet_util";
 import { Link } from "react-router-dom";
+import AddToCartButton from '../buttons/add_to_cart_button';
 
 const PetsIndex = props => {
     const dispatch = useDispatch();
@@ -27,6 +28,9 @@ const PetsIndex = props => {
                 <div className="pet-index-item-info">
                     <p>Pet Name: {pet.name}</p>
                     <p>Pet Type: {pet.petType}</p>
+                </div>
+                <div className="hidden-card-layer">
+                    <AddToCartButton petId={pet._id}/>
                 </div>
             </Link>
         </li>
