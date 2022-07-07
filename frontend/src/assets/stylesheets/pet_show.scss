@@ -1,7 +1,8 @@
 .pet-show-container {
     background-color: $light-green;
-    padding-bottom: 20px;
-    min-height: 90vh;
+    padding-top: 80px;
+    // padding-bottom: 20px;
+    height: calc(100vh - 80px);
 }
 
 .pet-show-content {

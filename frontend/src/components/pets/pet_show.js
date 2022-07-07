@@ -32,8 +32,8 @@ const PetShow = props => {
     const handleSubmit = e => {
         e.preventDefault();
         let review = {
-            user: user.id,
-            pet: pet._id,
+            // user: user.id,
+            // pet: pet._id,
             title: reviewTitle,
             text: reviewText
         }
