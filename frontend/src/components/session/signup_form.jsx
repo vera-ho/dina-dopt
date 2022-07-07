@@ -19,14 +19,10 @@ const SignupForm = (props) => {
   }, [dispatch])
 
   useEffect(() => {
-      if (props.signedIn === true) {
-          props.history.push('/login')
-      }
-
-      setState(prevState => {
+    setState(prevState => {
           return { ...prevState, errors: props.errors }
       })
-  }, [props.signedIn, props.errors, props.history])
+  }, [props.errors, props.history])
 
   const update = (field) => {
       return e => setState({ ...state, [field]: e.currentTarget.value })
