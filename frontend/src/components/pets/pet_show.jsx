@@ -69,7 +69,7 @@ const PetShow = props => {
         )
     })
 
-    const image = 'https://cdn.discordapp.com/attachments/862515957842706475/994301131951968338/hamipterus-paleorex-full.jpeg'
+    // const image = 'https://cdn.discordapp.com/attachments/862515957842706475/994301131951968338/hamipterus-paleorex-full.jpeg'
 
     if(!pet) {
         return null
@@ -79,8 +79,8 @@ const PetShow = props => {
                 <div className="pet-show-content">
                     <div className="pet-show-content-left">
                         <div className="pet-show-image-container">
-                            {/* <img src={pet.image_url} */}
-                            <img src={image}
+                            <img src={pet.image_url}
+                            // <img src={image}
                                 alt={pet.name} className="pet-show-image" />
                         </div>
                         <div className="pet-show-artist-credit">
