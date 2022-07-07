@@ -4,10 +4,15 @@ const Cart = require('../../models/Cart');
 const Pet = require('../../models/Pet');
 const passport = require('passport');
 
-router.get('/', async (req, res) => {
-  const carts = await Cart.find();
-  res.json(carts);
-});
+router.get(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    const user = req.user.id;
+    const cart = await Cart.find({ userId: user.id });
+    res.json(cart[0]);
+  }
+);
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;

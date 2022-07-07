@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use('/api/users', users);
 app.use('/api/reviews', reviews);
 app.use('/api/pets', pets);
-app.use('/api/carts', carts);
+app.use('/api/cart', carts);
 
 const port = process.env.PORT || 5001;
 
