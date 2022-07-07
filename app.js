@@ -18,8 +18,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// app.get('/', (req, res) => res.send('Hello World'));
-
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log('Connected to mongoDB'))
