@@ -1,0 +1,25 @@
+.pet-reviews-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pet-reviews-create {
+    width: 90%;
+}
+
+.add-pet-review-form {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+}
+
+
+label > input,
+label > textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 1.1rem;
+    background-color: #fcfcfc;
+    border: 1px solid #ccc;
+}

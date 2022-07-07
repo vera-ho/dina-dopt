@@ -11,14 +11,15 @@ import SplashPage from './splash/splash_page';
 const App = () => (
     <div>
         <NavBarContainer />
-        <div className="app-content">
         <AuthRoute exact path="/" component={SplashPage} />
+        {/* <div className='app-content'> */}
             <Switch>
-                <Route exact path="/pets" component={PetsContainer} />
-                <Route path="/pets/:pet_id" component={PetsShowContainer} />
+                <ProtectedRoute path="/pets/:pet_id" component={PetsShowContainer} />
+                <ProtectedRoute path="/pets" component={PetsContainer} />
                 <AuthRoute exact path='/signup' component={SignupFormContainer} />
             </Switch>
-        </div>
+        {/* </div> */}
+
     </div>
 );
 
