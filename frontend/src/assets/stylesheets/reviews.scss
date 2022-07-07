@@ -1,0 +1,130 @@
+.pet-reviews-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pet-reviews-create {
+    width: 95%;
+
+    label {
+       margin: 3px 0px; 
+    }
+
+    @media screen and (max-width: 1000px) {
+        width: 90%;
+    }
+}
+
+.add-pet-review-form {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+
+    font-family: $main-font-family;
+    font-size: 18px;
+    color: $main-color;
+
+    // width: 100%;
+
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+    }
+}
+
+.add-pet-review-form-left {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+
+    padding-right: 30px;
+    width: 65%;
+    // border: 2px dashed blue;
+
+    @media screen and (max-width: 1000px) {
+        width: 100%;
+    }   
+    
+}
+
+.add-pet-review-form-left > h1 {
+    font-size: $title-font-size;
+    padding-bottom: 10px;
+
+
+}
+
+.pet-review-form-label {
+    margin: 5px 0px;
+    input, 
+    textarea {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 6px;
+
+        background-color: #fcfcfc;
+        border: 1px solid #ccc;
+
+        font-family: $main-font-family;
+        font-size: 1.1rem;
+        color: $theme-redish;
+    }
+}
+
+.add-pet-review-form-right {
+    // padding: 0px 10px;
+    // border: 2px dotted blueviolet;
+    padding-left: 10px;
+
+    @media screen and (max-width: 1000px) {
+
+    }
+}
+
+.add-to-cart-button {
+    border: 2px solid $charcoal;
+    background-color: $theme-redish;
+    font-family: $main-font-family;
+    font-size: 18px;
+    color: $main-color;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+    margin-top: 10px;
+    width: 225px;
+    height: 50px;
+}
+
+.submit-review-button {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: 120px;
+    left: 15px;
+    cursor: pointer;
+
+    border: 2px solid $charcoal;
+    background-color: $theme-redish;
+    font-family: $main-font-family;
+    font-size: 18px;
+    color: $main-color;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+    @media screen and (max-width: 1000px) {
+        top: 0px;
+        width: 100%;
+        height: 50px;
+    }
+}
+
+.add-to-cart-button:hover,
+.submit-review-button:hover {
+    background-color: $theme-redish-hover;
+}
+
+.pet-reviews-index {
+    font-family: $main-font-family;
+    font-size: $title-font-size;
+    color: $main-color;
+
+    padding-top: 20px;
+}
