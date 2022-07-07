@@ -5,11 +5,11 @@
     background-image: url("https://dina-dopt-seed.s3.amazonaws.com/wallhaven-2koq9x_1920x1080-full.png");
     background-size: cover;
 
-    font-family: 'Cabin Sketch', cursive;
+    font-family: $main-font-family;
     font-size: 20px;
 }
 
-.signup-form-container {
+.session-form-container {
     width: 400px;
 
     position: absolute;
@@ -26,7 +26,7 @@
     background-color: $theme;
 }
 
-.signup-form {
+.session-form {
     width: 100%;
 
     display: flex;
@@ -39,7 +39,7 @@
     }
 }
 
-.signup-label {
+.session-label {
     display: flex;
     flex-direction: column;
 
@@ -52,14 +52,15 @@
         border: none;
 
         font-size: 18px;
+        font-family: 'Cabin Sketch', cursive;
     }
 }
 
-.signup-submit {
+.session-submit {
     height: 40px;
     width: 100px;
 
-    font-family: 'Cabin Sketch', cursive;
+    font-family: $main-font-family;
 
     color: white;
     border: 1px solid $charcoal;
@@ -73,9 +74,12 @@
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
-.signup-submit:hover {
+.session-submit:hover {
     background-color: $charcoal-hover;
+}
 
+.error-message-container {
+    margin-top: 10px;
 }
 
 .error-messages {

@@ -19,12 +19,9 @@ router.post('/register', (req, res) => {
   // Check to make sure nobody has already registered with a duplicate email
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
-      // Throw a 400 error if the email address already exists
-      return res
-        .status(400)
-        .json({ email: 'A user has already registered with this address' });
+      errors.email = 'Email already exists';
+      return res.status(400).json(errors);
     } else {
-      // Otherwise create a new user
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
@@ -35,10 +32,25 @@ router.post('/register', (req, res) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) throw err;
           newUser.password = hash;
-          newUser
-            .save()
-            .then((user) => res.json(user))
-            .catch((err) => console.log(err));
+          newUser.save().then((user) => {
+            const payload = {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+            };
+
+            jwt.sign(
+              payload,
+              keys.default.secretOrKey,
+              { expiresIn: 3600 },
+              (err, token) => {
+                res.json({
+                  success: true,
+                  token: 'Bearer ' + token,
+                });
+              }
+            );
+          });
         });
       });
     }
@@ -99,27 +111,27 @@ router.get(
   }
 );
 
-// Add to cart
-router.post('/cart', async (req, res) => {
-  const { petId, quantity, price } = req.body;
-  const userId = req.user.id;
-  try {
-    let cart = await Cart.findOne({ userId });
-    // if cart doesn't exist, create a new cart
-    if (!cart) {
-      const newCart = await Cart.create({
-        userId,
-        pets: [{ petId, name, quantity, price }],
-      });
-      return res.status(201).send(newCart);
-      // if cart exists, add pet to cart
-    } else {
-      cart.pets.push({ petId, name, quantity, price });
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).send('BROKEN');
-  }
-});
+// // Add to cart
+// router.post('/cart', async (req, res) => {
+//   const { petId, quantity, price } = req.body;
+//   const userId = req.user.id;
+//   try {
+//     let cart = await Cart.findOne({ userId });
+//     // if cart doesn't exist, create a new cart
+//     if (!cart) {
+//       const newCart = await Cart.create({
+//         userId,
+//         pets: [{ petId, name, quantity, price }],
+//       });
+//       return res.status(201).send(newCart);
+//       // if cart exists, add pet to cart
+//     } else {
+//       cart.pets.push({ petId, name, quantity, price });
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).send('BROKEN');
+//   }
+// });
 
 module.exports = router;

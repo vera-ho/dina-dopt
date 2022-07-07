@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { login, logout } from './actions/session_actions';
 import './assets/stylesheets/main.scss';
+import { openModal } from './actions/modal_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (decodedUser.exp < currentTime) {
       store.dispatch(logout());
-      window.location.href = '/login';
+      window.location.href = '/';
     }
   } else {
     store = configureStore({});
@@ -30,5 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={store} />, root);
 
   store.dispatch(login({ email: "test0@test0.com", password: "password" }))
+
   window.store = store;
 });

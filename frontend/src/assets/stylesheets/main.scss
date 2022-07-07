@@ -1,9 +1,12 @@
 @import './reset.scss';
 @import './variables.scss';
 
+@import './splash.scss';
 @import './nav.scss';
-@import './session_forms.scss';
 
 .app-content {
     padding-top: 80px;
 }
+@import './cart_sidebar.scss';
+@import './session_form.scss';
+@import './pet_index.scss'
