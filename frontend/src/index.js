@@ -34,4 +34,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // store.dispatch(login({ email: "demoUser@demo.com", password: "password" }))
 
   window.store = store;
+  window.getState = store.getState;
 });
