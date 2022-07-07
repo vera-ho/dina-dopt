@@ -16,16 +16,13 @@ const mSTP = (state, ownProps) => {
     let reviews = Object.values(state.entities.reviews);
     reviews = reviews.filter( review => review.pet === ownProps.match.params.pet_id)
 
-    // return {
-    //     pet: Object.values(state.entities.pets),
-    //     reviews: Object.values(state.entities.reviews)
-    // }
 
 
        return {
         pet:  pets[petIdx],
         reviews: reviews,
-        user: state.session.user
+        users: Object.values(state.entities.users),
+        currentUser: state.session.user
     }
 }
 

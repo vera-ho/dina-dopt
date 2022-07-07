@@ -111,6 +111,19 @@ router.get(
   }
 );
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  res.json(user);
+});
+
+router.get('/', (req, res) => {
+  User.find()
+      .sort({ date: -1 })
+      .then(reviews => res.json(reviews))
+      .catch(err => res.status(404).json({ nousersfound: 'No users found' }));
+});
+
 // // Add to cart
 // router.post('/cart', async (req, res) => {
 //   const { petId, quantity, price } = req.body;
