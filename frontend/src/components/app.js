@@ -7,6 +7,7 @@ import SignupFormContainer from './session/signup_form_container';
 import PetsContainer from './pets/pet_container';
 import PetsShowContainer from './pets/pet_show_container';
 import SplashPage from './splash/splash_page';
+import AboutUs from './about/about';
 
 const App = () => (
     <div className="app-content">
@@ -16,6 +17,7 @@ const App = () => (
             <ProtectedRoute path="/pets/:pet_id" component={PetsShowContainer} />
             <ProtectedRoute path="/pets" component={PetsContainer} />
             <AuthRoute exact path='/signup' component={SignupFormContainer} />
+            <Route exact path='/about' component={AboutUs} />
         </Switch>
     </div>
 );
