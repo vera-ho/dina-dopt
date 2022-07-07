@@ -45,7 +45,7 @@ const LoginForm = (props) => {
         e.preventDefault();
 
         let demoUser = {
-            email: "test0@test0.com",
+            email: "demoUser@demo.com",
             password: "password"
         };
 
