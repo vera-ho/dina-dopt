@@ -9,7 +9,7 @@ import PetsShowContainer from './pets/pet_show_container';
 import SplashPage from './splash/splash_page';
 
 const App = () => (
-    <div>
+    <div className="app-content">
         <NavBarContainer />
         <AuthRoute exact path="/" component={SplashPage} />
         <Switch>

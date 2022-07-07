@@ -9,15 +9,13 @@
     left: 0;
     z-index: 1000;
 
-    background-color: $theme;
+    background-color: $theme-opacity;
     color: white;
 
     font-size: 30px;
     font-family: $main-font-family;
 
     border-bottom: 2px solid $theme-border;
-    
-    opacity: 90%;
 
     a {
         color: white;
@@ -58,7 +56,7 @@
         color: white;
         font-family: 'Cabin Sketch', cursive;
     
-        background-color: $theme;
+        background-color: transparent;
         outline: none;
         border: none;
     
@@ -68,6 +66,30 @@
     }
 
     button:hover {
+        transform: scale(1.1);
+    }
+}
+
+.unauth-links {
+
+    a {
+        display: block;
+        transition: 0.2s;
+    }
+
+    a:hover {
+        transform: scale(1.1);
+    }
+}
+
+.about-container {
+
+    a {
+        display: block;
+        transition: 0.2s;
+    }
+
+    a:hover {
         transform: scale(1.1);
     }
 }
