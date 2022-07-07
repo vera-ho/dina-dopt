@@ -25,8 +25,6 @@
     font-size: 18px;
     color: $main-color;
 
-    // width: 100%;
-
     @media screen and (max-width: 1000px) {
         flex-direction: column;
     }
@@ -39,19 +37,15 @@
 
     padding-right: 30px;
     width: 65%;
-    // border: 2px dashed blue;
 
     @media screen and (max-width: 1000px) {
         width: 100%;
     }   
-    
 }
 
 .add-pet-review-form-left > h1 {
     font-size: $title-font-size;
     padding-bottom: 10px;
-
-
 }
 
 .pet-review-form-label {
@@ -72,11 +66,10 @@
 }
 
 .add-pet-review-form-right {
-    // padding: 0px 10px;
-    // border: 2px dotted blueviolet;
     padding-left: 10px;
 
     @media screen and (max-width: 1000px) {
+        padding: 10px 0;
 
     }
 }
@@ -110,8 +103,8 @@
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 
     @media screen and (max-width: 1000px) {
-        top: 0px;
-        width: 100%;
+        position: static;
+        width: 225px;
         height: 50px;
     }
 }
@@ -126,5 +119,19 @@
     font-size: $title-font-size;
     color: $main-color;
 
-    padding-top: 20px;
+    padding: 20px 0;
+    width: 95%;
+
+    @media screen and (max-width: 1000px) {
+        width: 90%;
+    }
+}
+
+.review-item {
+    font-size: 18px;
+    padding: 5px 0;
+}
+
+.review-item > p {
+    margin: 3px 0;
 }

@@ -6,11 +6,11 @@ const reviewsReducer = (state = {}, action) => {
 
   switch (action.type) {
   case RECEIVE_ALL_REVIEWS_FOR_PET:
-    return Object.assign( {}, action.reviews, state);
+    return Object.assign( {}, action.reviews.data, state);
     case RECEIVE_REVIEW:
     //   const newReview = { [action.review.id]: action.review };
     //   return newReview;
-      nextState[action.review.id] = action.review
+      nextState[action.review.id] = action.review.data
       return nextState
   default:
     return state;
