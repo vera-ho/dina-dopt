@@ -29,8 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   ReactDOM.render(<Root store={store} />, root);
+  // store.dispatch(login({ email: "test0@test0.com", password: "password" }))
 
-  store.dispatch(login({ email: "test0@test0.com", password: "password" }))
-
-  window.store = store;
+  // window.store = store;
 });

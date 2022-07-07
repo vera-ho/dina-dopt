@@ -4,7 +4,7 @@ import { receiveCart } from '../../actions/cart_actions';
 import { useDispatch } from 'react-redux';
 
 const AddToCartButton = (props) => {
-  console.log(props)
+  // console.log(props)
 
   const dispatch = useDispatch();
 

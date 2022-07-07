@@ -33,7 +33,7 @@ router.post(
     const user = req.user.id;
     const cart = await Cart.find({ userId: user.id });
     let pet = Pet.findById(petId);
-    console.log(req);
+    // console.log(req);
     const petIndex = cart.items.indexOf((item) => item.petId === pet.id);
     if (petIndex === -1) {
       cart.items[petIndex].quantity =
