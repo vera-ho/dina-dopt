@@ -5,9 +5,21 @@ export const fetchCart = () => {
 };
 
 export const addToCart = (petId) => {
-  return axios.post('/api/cart', petId);
+  return axios({
+    url: "/api/cart",
+    method: 'POST',
+    data: {
+      petId: petId
+    }
+  })
 };
 
 export const removeFromCart = (petId) => {
-  return axios.delete(`/api/cart/${petId}`);
+  return axios({
+    url: "/api/cart",
+    method: 'DELETE',
+    data: {
+      petId: petId
+    }
+  })
 };

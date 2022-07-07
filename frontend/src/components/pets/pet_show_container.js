@@ -14,6 +14,7 @@ const mSTP = (state, ownProps) => {
     });
 
     let reviews = Object.values(state.entities.reviews);
+    // debugger
     reviews = reviews.filter( review => review.pet === ownProps.match.params.pet_id)
 
     return {
