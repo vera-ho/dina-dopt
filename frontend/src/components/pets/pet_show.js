@@ -40,6 +40,10 @@ const PetShow = props => {
         createReview(pet._id, review);
     }
 
+    const addToCart = e => {
+        e.preventDefault();
+    }
+
     const reviewItems = reviews.map( review => {
         return (
             <li className="review-item">
@@ -79,6 +83,7 @@ const PetShow = props => {
                                 <p>Type: {pet.petType}</p>
                                 <p>Price: {pet.price} DinoCoins</p>
                                 <p>Description: {pet.description}</p>
+                                <button onClick={addToCart} className="add-to-cart-button">Adopt {pet.name}!</button>
                                 {/* <p>Click for reviews</p> */}
                             </div> 
                         </div>  
@@ -88,22 +93,32 @@ const PetShow = props => {
                 <div className="pet-reviews-container">
                     <div className="pet-reviews-create">
                         <form className="add-pet-review-form">
-                            <label>Your Name: {user.name}</label>
-                            <label>Title: 
-                                <input type="text"
-                                    value={reviewTitle} 
-                                    placeholder="Review Title"
-                                    onChange={ (e) => setReviewTitle(e.target.value) }
-                                />
-                            </label>
-                            <label>Review: 
-                                <textarea value={reviewText}
-                                    placeholder="Write your review here"
-                                    onChange={ e => setReviewText(e.target.value) } />
-                            </label>
-                            <button onClick={handleSubmit} className="submit-review-button">
-                                Submit Review
-                            </button>
+                            <div className="add-pet-review-form-left">
+                                <h1>Write a Review</h1>
+                                <label>Your Name: {user.name}</label>
+                                <label className="pet-review-form-label">Title: 
+                                    <br></br>
+                                    <input type="text"
+                                        value={reviewTitle} 
+                                        placeholder="Review Title"
+                                        onChange={ (e) => setReviewTitle(e.target.value) }
+                                    />
+                                </label>
+                                <label className="pet-review-form-label">Review: 
+                                    <br></br>
+                                    <textarea value={reviewText}
+                                        placeholder="Write your review here"
+                                        onChange={ e => setReviewText(e.target.value) } />
+                                </label>
+                            </div>
+                            <div className="add-pet-review-form-right">
+                                <button onClick={handleSubmit} className="submit-review-button">
+                                    Submit Review
+                                </button>
+                            </div>
+
+                            
+                            
                         </form>
                     </div>
                     <div className="pet-reviews-index">
