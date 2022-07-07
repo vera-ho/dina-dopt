@@ -51,7 +51,6 @@ router.post('/pet/:pet_id',
 
       // const pet = Pet.findById(req.params.petId)
 
-
         const newReview = new Review({
           title: req.body.title,
           text: req.body.text,
