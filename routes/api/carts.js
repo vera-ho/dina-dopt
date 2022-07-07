@@ -34,12 +34,7 @@ router.post(
     let cart = await Cart.find({ userId: user.id });
     cart = cart[0];
     let pet = Pet.findById(petId);
-    // console.log('request body:', req.body);
-    console.log(petId);
-    // console.log(user);
-    console.log('cart:', cart)
     const petIndex = cart.items.findIndex((item) => item.petId === pet.id);
-    console.log(petIndex)
     // if (petIndex !== -1) {
     //   cart.items[petIndex].quantity =
     //     cart.items[petIndex].quantity + req.body.quantity;
@@ -62,12 +57,16 @@ router.post(
   // }
 );
 
-router.delete('/', async (req, res) => {
-  const { id } = req.params;
-  const cart = await Cart.find({ userId: user.id });
-  let pet = Pet.findById(req.body.petId);
-  cart.items.filter((item) => item.petId !== pet.id);
-  res.json(cart);
+router.delete('/',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+    const { petId } = req.body;
+    const user = req.user;
+    let cart = await Cart.find({ userId: user.id });
+    cart = cart[0];
+    let pet = Pet.findById(petId);
+    cart.items.filter((item) => item.petId !== pet.id);
+    res.json(cart);
 });
 
 module.exports = router;

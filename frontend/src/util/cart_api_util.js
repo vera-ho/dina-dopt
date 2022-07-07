@@ -15,5 +15,11 @@ export const addToCart = (petId) => {
 };
 
 export const removeFromCart = (petId) => {
-  return axios.delete(`/api/cart/${petId}`);
+  return axios({
+    url: "/api/cart",
+    method: 'DELETE',
+    data: {
+      petId: petId
+    }
+  })
 };
