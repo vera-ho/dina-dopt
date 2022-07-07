@@ -64,7 +64,7 @@ const PetShow = props => {
 
         return (
             <li className="review-item">
-                <p>Name: {reviewUser.name ? reviewUser.name : ""}</p>
+                <p>Name: {reviewUser ? reviewUser.name : ""}</p>
                 <p>Title: {review.title}</p>
                 <p>Review: {review.text}</p>
             </li>
