@@ -7,7 +7,7 @@ import { fetchAllUsers } from "../../util/user_api_util";
 import { useLocation } from 'react-router-dom';
 import { receiveAllReviewsForPet } from "../../actions/review_actions";
 import { receiveAllUsers } from "../../actions/user_actions";
-import { createCart } from "../../util/cart_api_util";
+import { receiveCart } from "../../actions/cart_actions";
 
 const PetShow = props => {
     const dispatch = useDispatch(); 
@@ -53,7 +53,7 @@ const PetShow = props => {
     const addToCart = async (e) => {
         e.preventDefault();
         let newCart = await addToCart(props.currentCart.id);
-        return dispatch(createCart(newCart.data));
+        return dispatch(receiveCart(newCart.data));
     };
 
     const reviewItems = reviews.map( review => {
