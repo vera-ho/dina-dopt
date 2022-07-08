@@ -102,3 +102,16 @@
 .pet-show-details > p:first-child {
     text-transform: capitalize;
 }
+
+.add-to-cart-button {
+    border: 2px solid $charcoal;
+    background-color: $theme-redish;
+    font-family: $main-font-family;
+    font-size: 18px;
+    color: $main-color;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+    margin-top: 10px;
+    width: 300px;
+    height: 50px;
+}

@@ -1,0 +1,45 @@
+.hidden-card-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: 100%;
+    width: 100%;
+
+    border-radius: 24px;;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    opacity: 0;
+
+    .atc-card-button {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        height: 50px;
+        width: 150px;
+
+        border-radius: 16px;
+    }
+
+    .atc-card-button button {
+        height: 100%;
+        width: 100%;
+
+        font-size: 20px;
+        background-color: $theme-redish;
+        color: white;
+        font-family: $main-font-family;
+
+        border-radius: 16px;
+    }
+
+    .atc-card-button button:hover {
+        background-color: $theme-redish-hover;
+    }
+}
+
+.hidden-card-layer:hover {
+    opacity: 1;
+}
