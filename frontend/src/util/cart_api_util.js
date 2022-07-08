@@ -4,12 +4,12 @@ export const fetchCart = () => {
   return axios.get(`/api/cart/`);
 };
 
-export const addToCart = (petId) => {
+export const addToCart = (pet) => {
   return axios({
     url: "/api/cart",
     method: 'PATCH',
     data: {
-      petId: petId
+      pet: pet
     }
   })
 };

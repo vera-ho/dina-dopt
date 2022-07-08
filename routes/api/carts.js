@@ -29,35 +29,42 @@ router.patch(
   '/',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
-    const { petId } = req.body;
+    const { pet } = req.body;
+    // console.log(pet);
     const user = req.user;
     let cart = await Cart.findOne({ userId: user._id });
-
-    let pet = Pet.findById(petId);
+    let petAttributes = await Pet.findById(pet._id);
+    // console.log(petAttributes);
+    // let pet = Pet.findById(petId);
+    // console.log(cart.items);
     // const petIndex = cart.items.findIndex((item) => item.petId === pet.id);
+    // console.log(petIndex);
     // if (petIndex !== -1) {
     //   cart.items[petIndex].quantity =
-    //     cart.items[petIndex].quantity + req.body.quantity;
+    //     cart.items[petIndex].quantity + pet.quantity;
     //   cart.items[petIndex].total = cart.items[petIndex].quantity * pet.price;
     //   cart.items[petIndex].price = pet.price;
     //   cart.subTotal = cart.items
     //     .map((item) => item.total)
     //     .reduce((a, b) => a + b);
     // } else {
-      let petDetails = {
-        petId: petId,
-        quantity: Number.parseInt(req.body.quantity),
-        // price: pet.price,
-        // total: parseInt(pet.price) * parseInt(req.body.quantity),
-      };
-      cart.items.push(petDetails);
-      await cart.save();
-      res.json(cart);
-    }
+    let petDetails = {
+      name: petAttributes.name,
+      image_url: petAttributes.image_url,
+      petId: pet.id,
+      quantity: pet.quantity,
+      price: petAttributes.price,
+      total: petAttributes.price,
+    };
+    cart.items.push(petDetails);
+    await cart.save();
+    res.json(cart);
+  }
   // }
 );
 
-router.delete('/',
+router.delete(
+  '/',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     const { petId } = req.body;
@@ -66,10 +73,11 @@ router.delete('/',
 
     // let pet = Pet.findById(petId);
     let cartItems = cart.items.filter((item) => item.petId != petId);
-    cart.items = cartItems
+    cart.items = cartItems;
 
     await cart.save();
     res.json(cart);
-});
+  }
+);
 
 module.exports = router;

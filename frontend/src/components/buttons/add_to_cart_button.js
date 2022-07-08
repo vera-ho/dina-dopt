@@ -4,28 +4,27 @@ import { receiveCart } from '../../actions/cart_actions';
 import { useDispatch } from 'react-redux';
 
 const AddToCartButton = (props) => {
-
   const dispatch = useDispatch();
 
-  const { cartItems, petId } = props
+  const { cartItems, pet } = props;
 
-  console.log(cartItems, petId);
+  // console.log(cartItems, pet);
 
-  const [ added, setAdded ] = useState(() => {
-    return cartItems.includes(petId);
-  })
+  const [added, setAdded] = useState(() => {
+    return cartItems.includes(pet._id);
+  });
 
   const handleATC = async (e) => {
     e.preventDefault();
     setAdded(!added);
-    let newCart = await addToCart(petId);
+    let newCart = await addToCart(pet);
     return dispatch(receiveCart(newCart.data));
   };
 
   const handleRFC = async (e) => {
     e.preventDefault();
     setAdded(!added);
-    let newCart = await removeFromCart(petId);
+    let newCart = await removeFromCart(pet._id);
     return dispatch(receiveCart(newCart.data));
   };
 
@@ -35,7 +34,7 @@ const AddToCartButton = (props) => {
         <button onClick={handleATC}>Add to Cart</button>
       </div>
     );
-  }
+  };
 
   const removeButton = () => {
     return (
@@ -43,7 +42,7 @@ const AddToCartButton = (props) => {
         <button onClick={handleRFC}>Remove</button>
       </div>
     );
-  }
+  };
 
   return added ? removeButton() : addButton();
 };
