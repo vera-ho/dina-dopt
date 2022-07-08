@@ -7,6 +7,8 @@ import { setAuthToken } from './util/session_api_util';
 import { login, logout } from './actions/session_actions';
 import './assets/stylesheets/main.scss';
 import { openModal } from './actions/modal_actions';
+import axios from 'axios';
+import { fetchAllReviewsForPet } from './util/reviews_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -34,4 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.store = store;
   window.getState = store.getState;
+  window.axios = axios;
+  window.fetchAllReviews = fetchAllReviewsForPet;
 });

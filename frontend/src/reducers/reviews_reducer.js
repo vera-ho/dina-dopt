@@ -5,15 +5,18 @@ const reviewsReducer = (state = {}, action) => {
   let nextState = Object.assign({}, state);
 
   switch (action.type) {
-  case RECEIVE_ALL_REVIEWS_FOR_PET:
-    return Object.assign( {}, action.reviews.data, state);
+    case RECEIVE_ALL_REVIEWS_FOR_PET:
+      Object.assign(nextState, action.reviews.data);
+      return nextState;
     case RECEIVE_REVIEW:
-    //   const newReview = { [action.review.id]: action.review };
-    //   return newReview;
+      //   const newReview = { [action.review.id]: action.review };
+      //   return newReview;
+      console.log("reducer")
+      console.log(action.review)
       nextState[action.review.id] = action.review.data
       return nextState
-  default:
-    return state;
+    default:
+      return state;
   }
 }
   
