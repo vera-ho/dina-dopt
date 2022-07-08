@@ -9,8 +9,6 @@ const AddToCartButton = (props) => {
 
   const { cartItems, petId } = props
 
-  console.log(cartItems, petId);
-
   const [ added, setAdded ] = useState(() => {
     return cartItems.includes(petId);
   })

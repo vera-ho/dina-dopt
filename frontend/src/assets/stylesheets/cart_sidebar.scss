@@ -1,25 +1,25 @@
-.modal-background {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 100;
-}
+// .modal-background {
+//     position: fixed;
+//     top: 0;
+//     bottom: 0;
+//     right: 0;
+//     left: 0;
+//     background: rgba(0, 0, 0, 0.6);
+//     z-index: 100;
+// }
 
-.cart-sidebar-parent {
-    position: relative;
-    height: 100%;
-    top: 0;
-    right: 0;
-}
+// .cart-sidebar-parent {
+//     position: relative;
+//     height: 100%;
+//     top: 0;
+//     right: 0;
+// }
 
 #cart-sidebar-container {
     position: absolute;
     top: 0;
-    // right: -400px;
-    right: 0;
+    right: -400px;
+    // right: 0;
 
     z-index: 1001;
 
@@ -38,6 +38,9 @@
 
 .sidebar-close-header {
     height: 78px;
+    width: 100%;
+
+    display: flex;
 
     .close-sidebar-button {
         display: flex;
@@ -46,11 +49,11 @@
 
         font-size: 80px;
 
-        height: 100%;
+        height: 80px;
         width: 78px;
         padding: 2px;
 
-        box-sizing: border-box;
+        border-bottom: 2px solid $theme-border;
 
         background-color: $theme;
         color: white;
@@ -60,3 +63,104 @@
         background-color: rgb(98, 153, 171);
     }
 }
+
+.cart-sidebar-info-container {
+    flex: 1;
+    height: 100%;
+
+    background-color: $theme;
+    border-bottom: 2px solid $theme-border;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        font-size: 36px;
+    }
+}
+
+.cart-item-header {
+    display: flex;
+    height: 80px;
+
+    font-size: 35px;
+    color: $theme;
+
+    .cart-item-name-header {
+        width: 75%;
+        display: flex;
+
+        box-sizing: border-box;
+        padding-left: 20px;
+        align-items: center;
+    }
+
+    .cart-item-price-header {
+        width: 25%;
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.cart-item-pet-info {
+    display: flex;
+    height: 40px;
+
+    font-size: 28px;
+
+    .cart-item-pet-name-container {
+        width: 75%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        box-sizing: border-box;
+        padding-left: 20px;
+    }
+
+    .cart-item-pet-price-container {
+        width: 25%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.price-checkout-container {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+}
+
+.cart-total-price-container {
+    display: flex;
+    color: $theme;
+    width: 400px;
+    height: 50px;
+
+    .price-header {
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+
+        height: 100%;
+        width: 70%;
+    }
+
+    .total-price {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 100%;
+        width: 30%;
+    }
+
+}
+
+
+

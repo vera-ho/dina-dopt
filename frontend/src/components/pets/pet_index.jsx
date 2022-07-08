@@ -19,7 +19,6 @@ const PetsIndex = props => {
         let pets = await getPets();
         dispatch(receiveAllPets(pets));
         let cart = await fetchCart();
-        console.log(cart.data)
         dispatch(receiveCart(cart.data))
     }
 
