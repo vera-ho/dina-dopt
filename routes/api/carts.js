@@ -8,9 +8,9 @@ router.get(
   '/',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
-    const user = req.user.id;
-    const cart = await Cart.find({ userId: user.id });
-    res.json(cart[0]);
+    const user = req.user;
+    let cart = await Cart.findOne({ userId: user._id });
+    res.json(cart);
   }
 );
 
@@ -25,16 +25,16 @@ router.get(
 //   }
 // });
 
-router.post(
+router.patch(
   '/',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     const { petId } = req.body;
     const user = req.user;
-    let cart = await Cart.find({ userId: user.id });
-    cart = cart[0];
+    let cart = await Cart.findOne({ userId: user._id });
+
     let pet = Pet.findById(petId);
-    const petIndex = cart.items.findIndex((item) => item.petId === pet.id);
+    // const petIndex = cart.items.findIndex((item) => item.petId === pet.id);
     // if (petIndex !== -1) {
     //   cart.items[petIndex].quantity =
     //     cart.items[petIndex].quantity + req.body.quantity;
@@ -47,11 +47,11 @@ router.post(
       let petDetails = {
         petId: petId,
         quantity: Number.parseInt(req.body.quantity),
-        price: pet.price,
-        total: parseInt(pet.price) * parseInt(req.body.quantity),
+        // price: pet.price,
+        // total: parseInt(pet.price) * parseInt(req.body.quantity),
       };
-      // console.log(petDetails);
       cart.items.push(petDetails);
+      await cart.save();
       res.json(cart);
     }
   // }
@@ -62,10 +62,13 @@ router.delete('/',
   async (req, res) => {
     const { petId } = req.body;
     const user = req.user;
-    let cart = await Cart.find({ userId: user.id });
-    cart = cart[0];
-    let pet = Pet.findById(petId);
-    cart.items.filter((item) => item.petId !== pet.id);
+    let cart = await Cart.findOne({ userId: user._id });
+
+    // let pet = Pet.findById(petId);
+    let cartItems = cart.items.filter((item) => item.petId != petId);
+    cart.items = cartItems
+
+    await cart.save();
     res.json(cart);
 });
 

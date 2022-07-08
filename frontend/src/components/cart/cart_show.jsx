@@ -16,7 +16,6 @@ const CartShow = (props) => {
   }
 
   const cart = useSelector((state) => state.entities.cart);
-  // console.log(cart)
 
   if (!cart) return null;
 

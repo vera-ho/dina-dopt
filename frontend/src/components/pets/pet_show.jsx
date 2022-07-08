@@ -4,21 +4,23 @@ import { receiveSinglePet } from "../../actions/pet_actions";
 import { getPet } from "../../util/pet_util";
 import { createReview, fetchAllReviewsForPet } from "../../util/reviews_api_util";
 import { fetchAllUsers } from "../../util/user_api_util";
-import { receiveAllReviewsForPet } from "../../actions/review_actions";
+import { receiveAllReviewsForPet, receiveErrors, receiveReview } from "../../actions/review_actions";
 import { receiveAllUsers } from "../../actions/user_actions";
 import { receiveCart } from "../../actions/cart_actions";
 
 const PetShow = props => {
     const dispatch = useDispatch(); 
-    const { pet, reviews, currentUser, users} = props;
-    const petId = props.match.params.pet_id;
+    const { pet, reviews, currentUser, users } = props;
     const [reviewTitle, setReviewTitle] = useState("");
     const [reviewText, setReviewText] = useState("");
+    const petId = props.match.params.pet_id;
+
 
     useEffect( () => {
         fetchPet();
+        fetchPetReviews();
         fetchUsers();
-    }, []);
+    }, [petId]);
 
     const fetchPet = async () => {
         let pet = await getPet(petId);
@@ -26,7 +28,6 @@ const PetShow = props => {
     }
 
     const fetchPetReviews = async () => {
-        // console.log("Getting reviews for: " + petId);
         let reviews = await fetchAllReviewsForPet(petId);
         dispatch(receiveAllReviewsForPet(reviews));
     }
@@ -45,7 +46,8 @@ const PetShow = props => {
         }
 
         createReview(pet._id, review)
-            .then( () => fetchPetReviews());
+            .then( review => dispatch(receiveReview(review)),
+            errors => dispatch(receiveErrors(errors)));
         setReviewText("");
         setReviewTitle("");
     }
@@ -56,6 +58,8 @@ const PetShow = props => {
         return dispatch(receiveCart(newCart.data));
     };
 
+            
+    const noReviews = (<li className="review-item">Be the first to leave a review!</li>);
     const reviewItems = reviews.map( (review, idx) => {
         let reviewUser;
         reviewUser = users.filter(user => user._id === review.user)[0]
@@ -69,24 +73,15 @@ const PetShow = props => {
         )
     })
 
-    useEffect( () => {
-        fetchPetReviews();
-    }, [reviews.length])
-
-    // const image = 'https://cdn.discordapp.com/attachments/862515957842706475/994301131951968338/hamipterus-paleorex-full.jpeg'
-
     if(!pet) {
         return null
     } else { 
-        // console.log(props);
-        // console.log(pet._id)
         return (
             <div className="pet-show-container">
                 <div className="pet-show-content">
                     <div className="pet-show-content-left">
                         <div className="pet-show-image-container">
                             <img src={pet.image_url}
-                            // <img src={image}
                                 alt={pet.name} className="pet-show-image" />
                         </div>
                         <div className="pet-show-artist-credit">
@@ -142,7 +137,7 @@ const PetShow = props => {
                     <div className="pet-reviews-index">
                         <h1>Reviews for {pet.name}</h1>
                         <ul>
-                            {reviewItems}
+                            {reviews.length > 0 ? reviewItems : noReviews}
                         </ul>
                     </div>
                 </div>
