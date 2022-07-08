@@ -29,10 +29,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   ReactDOM.render(<Root store={store} />, root);
-
-  // store.dispatch(login({ email: "test0@test0.com", password: "password" }))
-  // store.dispatch(login({ email: "demoUser@demo.com", password: "password" }))
-
-  window.store = store;
-  window.getState = store.getState;
+  // store.dispatch(login({ email: "demo@demo.com", password: "password" }))
 });
