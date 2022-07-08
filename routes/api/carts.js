@@ -59,7 +59,7 @@ router.delete('/', async (req, res) => {
   const { id } = req.params;
   const cart = await Cart.find({ userId: user.id });
   let pet = Pet.findById(req.body.petId);
-  cart.items.filter((item) => item.petId !== pet.id);
+  cart = cart.items.filter((item) => item.petId !== pet.id);
   res.json(cart);
 });
 
