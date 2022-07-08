@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import CartSidebar from '../cart/cart_sidebar';
+import CartSidebarContainer from '../cart/cart_sidebar_container';
 
 const NavBar = props => {
 
@@ -22,7 +22,7 @@ const NavBar = props => {
                 <div className="auth-links">
                     <button className="logout-button" onClick={logoutUser}>Logout</button>
                     <button onClick={handleOpenCartSidebar}>My Cart</button>
-                    <CartSidebar />
+                    <CartSidebarContainer />
                 </div>
             );
         } else {
