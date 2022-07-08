@@ -38,7 +38,6 @@ const CartSidebar = (props) => {
     }
 
     if (!cart || !cartItemPets) return null;
-    console.log(cartItemPets);
 
     return (
         <div id="cart-sidebar-container">
