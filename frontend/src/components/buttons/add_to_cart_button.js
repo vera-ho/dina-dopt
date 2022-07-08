@@ -22,7 +22,7 @@ const AddToCartButton = (props) => {
     return dispatch(receiveCart(newCart.data));
   };
 
-  const handleRMC = async (e) => {
+  const handleRFC = async (e) => {
     e.preventDefault();
     setAdded(!added);
     let newCart = await removeFromCart(petId);
@@ -40,7 +40,7 @@ const AddToCartButton = (props) => {
   const removeButton = () => {
     return (
       <div className="add-to-cart-button atc-card-button">
-        <button onClick={handleRMC}>Remove</button>
+        <button onClick={handleRFC}>Remove</button>
       </div>
     );
   }

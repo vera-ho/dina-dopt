@@ -18,7 +18,7 @@ const PetShow = props => {
     useEffect( () => {
         fetchPet();
         fetchUsers();
-    }, []);
+    }, [petId]);
 
     const fetchPet = async () => {
         let pet = await getPet(petId);
@@ -71,7 +71,7 @@ const PetShow = props => {
 
     useEffect( () => {
         fetchPetReviews();
-    }, [reviews.length])
+    }, [petId])
 
     // const image = 'https://cdn.discordapp.com/attachments/862515957842706475/994301131951968338/hamipterus-paleorex-full.jpeg'
 
