@@ -41,7 +41,7 @@ router.post('/register', (req, res) => {
 
             jwt.sign(
               payload,
-              keys.default.secretOrKey,
+              keys.secretOrKey,
               { expiresIn: 3600 },
               (err, token) => {
                 res.json({
@@ -52,6 +52,12 @@ router.post('/register', (req, res) => {
             );
           });
         });
+      });
+
+      const newCart = Cart.create({
+        userId: newUser._id,
+        items: [],
+        subTotal: 0,
       });
     }
   });

@@ -1,8 +1,11 @@
 .pet-show-container {
-    background-color: $light-green;
-    padding-top: 80px;
-    // padding-bottom: 20px;
-    height: calc(100vh - 80px);
+    background-color: $theme-light;
+    padding: 80px 200px 0px;
+    min-height: calc(100vh - 80px);
+
+    @media screen and (max-width: 1440px) {
+        padding: 80px 100px 0px;
+    }
 }
 
 .pet-show-content {
@@ -55,7 +58,7 @@
     width: 90%;
     min-width: 200px;
     border-radius: 15px;
-    border: 2px dashed white;
+    border: 3px solid $theme-border;
 }
 
 .pet-show-content-right {
@@ -79,7 +82,7 @@
 .pet-show-details {
     color: $main-color;
     font-family: $main-font-family;
-    font-size: 20px;
+    font-size: 30px;
     width: 90%;
 
     @media screen and (max-width: 1000px) {
@@ -98,4 +101,38 @@
 
 .pet-show-details > p:first-child {
     text-transform: capitalize;
+}
+
+.show-page-atc-button  {
+    // border: 2px solid $charcoal;
+    // border-radius: 5px;
+    // background-color: $theme-redish;
+    // font-family: $main-font-family;
+    // font-size: 18px;
+    // color: $main-color;
+    // box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+    margin-top: 10px;
+    width: 300px;
+    height: 50px;
+
+    .atc-card-button button {
+        font-family: $main-font-family;
+        font-size: 18px;
+        color: $main-color;
+
+        background-color: $theme-redish;
+        border-radius: 5px;
+        border: 2px solid $charcoal;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+        width: 300px;
+        height: 50px;
+    }
+
+    .atc-card-button button:hover {
+        background-color: $theme-redish-hover;
+        width: 300px;
+        height: 50px;
+    }
 }

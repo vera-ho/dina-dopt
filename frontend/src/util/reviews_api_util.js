@@ -11,4 +11,3 @@ export const fetchAllReviewsForPet = (petId) => {
 export const fetchAllReviews = () => {
     return axios.get(`/api/reviews`);
 };
-

@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
-import { requestSinglePet } from "../../actions/pet_actions";
-import { fetchAllReviewsForPet } from "../../actions/review_actions";
+import { cartItemsArray } from "../../reducers/selector";
 import PetsShow from "./pet_show";
 
 const mSTP = (state, ownProps) => {
@@ -16,21 +15,13 @@ const mSTP = (state, ownProps) => {
     let reviews = Object.values(state.entities.reviews);
     reviews = reviews.filter( review => review.pet === ownProps.match.params.pet_id)
 
-
-
-       return {
+    return {
         pet:  pets[petIdx],
         reviews: reviews,
         users: Object.values(state.entities.users),
-        currentUser: state.session.user
+        currentUser: state.session.user,
+        cartItems: cartItemsArray(state)
     }
 }
 
-const mDTP = dispatch => {
-    return {
-        requestSinglePet: (petId) => dispatch(requestSinglePet(petId)),
-        fetchAllReviewsForPet: (petId) => dispatch(fetchAllReviewsForPet(petId)),
-    }
-}
-
-export default connect(mSTP, mDTP)(PetsShow);
+export default connect(mSTP)(PetsShow);

@@ -1,40 +1,44 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { receiveAllPets } from "../../actions/pet_actions";
 import { getPets } from "../../util/pet_util";
-import { fetchAllReviews } from "../../util/reviews_api_util";
-import { receiveAllReviewsForPet } from "../../actions/review_actions";
 import { Link } from "react-router-dom";
+import AddToCartButton from '../buttons/add_to_cart_button';
+import { fetchCart } from "../../util/cart_api_util";
+import { receiveCart } from "../../actions/cart_actions";
 
 const PetsIndex = props => {
     const dispatch = useDispatch();
-    const { pets } = props;
+    const { pets, cartItems } = props;
 
     useEffect( () => {
-        fetchPets();
-        fetchReviews();
+        fetchData();
     }, []);
 
-    const fetchPets = async () => {
+    const fetchData = async () => {
         let pets = await getPets();
         dispatch(receiveAllPets(pets));
+        let cart = await fetchCart();
+        console.log(cart.data)
+        dispatch(receiveCart(cart.data))
     }
 
-    const fetchReviews = async () => {
-        let reviews = await fetchAllReviews();
-        dispatch(receiveAllReviewsForPet(reviews));
-    }
+    // const cart = useSelector((state) => state.entities.cart);
 
-    if(!pets) return null;
+    if(!pets || !cartItems) return null;
 
     const petItems = pets.map( (pet, idx) => (
         <li className="pet-index-item" key={idx}>
             <Link to={`/pets/${pet._id}`} className="pet-index-item-link">
-                {/* <img src={pet.image_url}  */} 
-                <img src="https://dina-dopt-seed.s3.amazonaws.com/compressed-full+2/bambiraptor-alex-shaffer-full.jpg" 
+                <img src={pet.image_url}
                     alt={pet.name} className="pet-index-item-img" />
-                <p>Pet Name: {pet.name}</p>
-                <p>Pet Type: {pet.petType}</p>
+                <div className="pet-index-item-info">
+                    <p>Pet Name: {pet.name}</p>
+                    <p>Pet Type: {pet.petType}</p>
+                </div>
+                <div className="hidden-card-layer">
+                    <AddToCartButton petId={pet._id} cartItems={cartItems} />
+                </div>
             </Link>
         </li>
     ));
@@ -42,7 +46,6 @@ const PetsIndex = props => {
     return (
         <div className="pets-index-container">
             <div className="pets-index-content">
-                {/* <h1>Dinos Available</h1> */}
                 <ul>
                     {petItems}
                 </ul>

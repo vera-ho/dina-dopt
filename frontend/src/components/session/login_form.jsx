@@ -18,7 +18,7 @@ const LoginForm = (props) => {
 
     useEffect(() => {
         if (props.currentUser === true) {
-            props.history.push('/tweets')
+            props.history.push('/pets')
         }
 
         setState(prevState => {
@@ -41,7 +41,7 @@ const LoginForm = (props) => {
         props.login(user);
     }
 
-      const handleDemoLogin = (e) => {
+    const handleDemoLogin = (e) => {
         e.preventDefault();
 
         let demoUser = {

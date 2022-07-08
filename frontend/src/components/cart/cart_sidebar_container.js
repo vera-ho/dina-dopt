@@ -3,7 +3,7 @@ import CartSidebar from './cart_sidebar';
 
 const mSTP = (state) => {
     return {
-
+        
     }
 }
 

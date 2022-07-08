@@ -9,7 +9,7 @@ const passport = require('passport');
 const users = require('./routes/api/users.js');
 const pets = require('./routes/api/pets.js');
 const reviews = require('./routes/api/reviews.js');
-// const carts = require('./routes/api/carts.js');
+const carts = require('./routes/api/carts.js');
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
@@ -17,8 +17,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
   });
 }
-
-// app.get('/', (req, res) => res.send('Hello World'));
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -34,7 +32,7 @@ app.use(bodyParser.json());
 app.use('/api/users', users);
 app.use('/api/reviews', reviews);
 app.use('/api/pets', pets);
-// app.use('/api/carts', carts);
+app.use('/api/cart', carts);
 
 const port = process.env.PORT || 5001;
 

@@ -4,32 +4,34 @@ import { receiveSinglePet } from "../../actions/pet_actions";
 import { getPet } from "../../util/pet_util";
 import { createReview, fetchAllReviewsForPet, fetchAllReviews } from "../../util/reviews_api_util";
 import { fetchAllUsers } from "../../util/user_api_util";
-import { useLocation } from 'react-router-dom';
-import { receiveAllReviewsForPet , receiveReview } from "../../actions/review_actions";
+import { receiveAllReviewsForPet, receiveErrors, receiveReview } from "../../actions/review_actions";
 import { receiveAllUsers } from "../../actions/user_actions";
-
+import { receiveCart } from "../../actions/cart_actions";
+import { fetchCart } from "../../util/cart_api_util";
+import AddToCartButton from "../buttons/add_to_cart_button";
 
 const PetShow = props => {
     const dispatch = useDispatch(); 
-    const location = useLocation();
-    const { pet, reviews, currentUser, users} = props;
-
+    const { pet, reviews, currentUser, users, cartItems } = props;
     const [reviewTitle, setReviewTitle] = useState("");
     const [reviewText, setReviewText] = useState("");
+    const petId = props.match.params.pet_id;
+
 
     useEffect( () => {
         fetchPet();
         fetchPetReviews();
         fetchUsers();
+        fetchCartData();
     }, []);
 
     const fetchPet = async () => {
-        let pet = await getPet(location.pathname.replace("/pets/",""));
+        let pet = await getPet(petId);
         dispatch(receiveSinglePet(pet));
     }
 
     const fetchPetReviews = async () => {
-        let reviews = await fetchAllReviewsForPet(location.pathname.replace("/pets/",""));
+        let reviews = await fetchAllReviewsForPet(petId);
         dispatch(receiveAllReviewsForPet(reviews));
     }
 
@@ -43,31 +45,40 @@ const PetShow = props => {
         dispatch(receiveAllUsers(users));
     }
 
-    const handleSubmit = e => {
+    const fetchCartData = async () => {
+        let cart = await fetchCart();
+        dispatch(receiveCart(cart.data));
+    }
+
+    const submitReview = e => {
         e.preventDefault();
+
         let review = {
-            // user: user.id,
-            // pet: pet._id,
             title: reviewTitle,
             text: reviewText
         }
-        createReview(pet._id, review)
-        .then( () => fetchPetReviews() )
-        // window.location.reload()
 
+        createReview(pet._id, review)
+            .then( review => dispatch(receiveReview(review)),
+            errors => dispatch(receiveErrors(errors)));
+        setReviewText("");
+        setReviewTitle("");
     }
 
-    
+    const addToCart = async (e) => {
+        e.preventDefault();
+        let newCart = await addToCart(props.currentCart.id);
+        return dispatch(receiveCart(newCart.data));
+    };
 
- 
-
-    const reviewItems = reviews.map( review => {
-        
+            
+    const noReviews = (<li className="review-item">Be the first to leave a review!</li>);
+    const reviewItems = reviews.map( (review, idx) => {
         let reviewUser;
         reviewUser = users.filter(user => user._id === review.user)[0]
 
         return (
-            <li className="review-item">
+            <li className="review-item" key={idx}>
                 <p>Name: {reviewUser ? reviewUser.name : ""}</p>
                 <p>Title: {review.title}</p>
                 <p>Review: {review.text}</p>
@@ -75,19 +86,15 @@ const PetShow = props => {
         )
     })
 
-    const image = 'https://cdn.discordapp.com/attachments/862515957842706475/994301131951968338/hamipterus-paleorex-full.jpeg'
-
-    if(!pet) {
+    if(!pet || !cartItems) {
         return null
     } else { 
-
         return (
             <div className="pet-show-container">
                 <div className="pet-show-content">
                     <div className="pet-show-content-left">
                         <div className="pet-show-image-container">
-                            {/* <img src={pet.image_url} */}
-                            <img src={image}
+                            <img src={pet.image_url}
                                 alt={pet.name} className="pet-show-image" />
                         </div>
                         <div className="pet-show-artist-credit">
@@ -105,7 +112,10 @@ const PetShow = props => {
                                 <p>Type: {pet.petType}</p>
                                 <p>Price: {pet.price} DinoCoins</p>
                                 <p>Description: {pet.description}</p>
-                                {/* <p>Click for reviews</p> */}
+                                <div className="show-page-atc-button">
+                                    <AddToCartButton petId={petId} cartItems={cartItems} />
+                                </div>
+                                {/* <button onClick={addToCart} className="add-to-cart-button">Add {pet.name} to cart</button> */}
                             </div> 
                         </div>  
                     </div>
@@ -114,28 +124,36 @@ const PetShow = props => {
                 <div className="pet-reviews-container">
                     <div className="pet-reviews-create">
                         <form className="add-pet-review-form">
-                            <label>Your Name: {currentUser.name}</label>
-                            <label>Title: 
-                                <input type="text"
-                                    value={reviewTitle} 
-                                    placeholder="Review Title"
-                                    onChange={ (e) => setReviewTitle(e.target.value) }
-                                />
-                            </label>
-                            <label>Review: 
-                                <textarea value={reviewText}
-                                    placeholder="Write your review here"
-                                    onChange={ e => setReviewText(e.target.value) } />
-                            </label>
-                            <button onClick={handleSubmit} className="submit-review-button">
-                                Submit Review
-                            </button>
+                            <div className="add-pet-review-form-left">
+                                <h1>Write a Review</h1>
+                                <label>Your Name: {currentUser.name}</label>
+                                <label className="pet-review-form-label">Title: 
+                                    <br></br>
+                                    <input type="text"
+                                        value={reviewTitle} 
+                                        placeholder="Review Title"
+                                        onChange={ (e) => setReviewTitle(e.target.value) }
+                                    />
+                                </label>
+                                <label className="pet-review-form-label">Review: 
+                                    <br></br>
+                                    <textarea value={reviewText}
+                                        placeholder="Write your review here"
+                                        onChange={ e => setReviewText(e.target.value) } />
+                                </label>
+                            </div>
+                            
+                            <div className="add-pet-review-form-right">
+                                <button onClick={submitReview} className="submit-review-button">
+                                    Submit Review
+                                </button>
+                            </div>
                         </form>
                     </div>
                     <div className="pet-reviews-index">
                         <h1>Reviews for {pet.name}</h1>
                         <ul>
-                            {reviewItems}
+                            {reviews.length > 0 ? reviewItems : noReviews}
                         </ul>
                     </div>
                 </div>

@@ -5,13 +5,10 @@
 @import './nav.scss';
 @import './session_form.scss';
 
-
 @import './cart_sidebar.scss';
 @import './session_form.scss';
 @import './pet_index.scss';
+@import './pet_index_item.scss';
 @import './pet_show.scss';
 @import './reviews.scss';
-
-.app-content {
-    padding-top: 80px;
-}
+@import './about.scss';
