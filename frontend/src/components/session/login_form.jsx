@@ -18,7 +18,7 @@ const LoginForm = (props) => {
 
     useEffect(() => {
         if (props.currentUser === true) {
-            props.history.push('/tweets')
+            props.history.push('/pets')
         }
 
         setState(prevState => {
@@ -30,7 +30,7 @@ const LoginForm = (props) => {
         return e => setState({ ...state, [field]: e.currentTarget.value })
     }
 
-    const handleSubmit = (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
 
         let user = {
@@ -39,6 +39,17 @@ const LoginForm = (props) => {
         };
 
         props.login(user);
+    }
+
+    const handleDemoLogin = (e) => {
+        e.preventDefault();
+
+        let demoUser = {
+            email: "demoUser@demo.com",
+            password: "password"
+        };
+
+        props.login(demoUser);
     }
 
     const renderErrors = () => {
@@ -59,7 +70,7 @@ const LoginForm = (props) => {
 
     return (
         <div className="session-form-container">
-            <form className="session-form" onSubmit={handleSubmit}>
+            <form className="session-form">
                 <label className="session-label">Email:
                     <input type="text"
                         value={state.email}
@@ -72,7 +83,8 @@ const LoginForm = (props) => {
                         onChange={update('password')}
                     />
                 </label>
-            <input className="session-submit" type="submit" value="Login" />
+            <button className="session-submit" onClick={handleLogin}>Login</button>
+            <button className="session-submit" onClick={handleDemoLogin}>Demo Login</button>
             {renderErrors()}
             </form>
         </div>

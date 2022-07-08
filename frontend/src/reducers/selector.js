@@ -26,6 +26,23 @@ export const cartItemsArray = (state) => {
     return result;
 }
 
+export const cartItemPets = (state, pets) => {
+    let result = [];
+
+    if (!state.entities.cart?.items || !state.entities.pets) {
+        return null
+    }
+    const cartItems = state.entities.cart.items;
+    cartItems.forEach(item => {
+        pets.forEach(pet => {
+            if (pet._id === item.petId) {
+                result.push(pet)
+            }
+        })
+    })
+    return result;
+}
+
 
 
 // export const selectAllPets = (state) => {
