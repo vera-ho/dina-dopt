@@ -44,7 +44,7 @@ const AddToCartButton = (props) => {
     );
   };
 
-  return added ? removeButton() : addButton();
+  return addButton();
 };
 
 export default AddToCartButton;

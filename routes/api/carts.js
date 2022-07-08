@@ -36,31 +36,34 @@ router.patch(
     let petAttributes = await Pet.findById(pet._id);
     // console.log(petAttributes);
     // let pet = Pet.findById(petId);
-    // console.log(cart.items);
-    // const petIndex = cart.items.findIndex((item) => item.petId === pet.id);
-    // console.log(petIndex);
-    // if (petIndex !== -1) {
-    //   cart.items[petIndex].quantity =
-    //     cart.items[petIndex].quantity + pet.quantity;
-    //   cart.items[petIndex].total = cart.items[petIndex].quantity * pet.price;
-    //   cart.items[petIndex].price = pet.price;
-    //   cart.subTotal = cart.items
-    //     .map((item) => item.total)
-    //     .reduce((a, b) => a + b);
-    // } else {
-    let petDetails = {
-      name: petAttributes.name,
-      image_url: petAttributes.image_url,
-      petId: pet.id,
-      quantity: pet.quantity,
-      price: petAttributes.price,
-      total: petAttributes.price,
-    };
-    cart.items.push(petDetails);
-    await cart.save();
-    res.json(cart);
+    // console.log(cart.items[0]);
+    console.log(cart.items[4]);
+    console.log(pet);
+    const petIndex = cart.items.findIndex((item) => item.petId == pet._id);
+    console.log(petIndex);
+    if (petIndex !== -1) {
+      cart.items[petIndex].quantity = cart.items[petIndex].quantity + 1;
+      cart.items[petIndex].total = cart.items[petIndex].quantity * pet.price;
+      cart.items[petIndex].price = pet.price;
+      cart.subTotal = cart.items
+        .map((item) => item.total)
+        .reduce((a, b) => a + b);
+      await cart.save();
+      res.json(cart);
+    } else {
+      let petDetails = {
+        name: petAttributes.name,
+        image_url: petAttributes.image_url,
+        petId: pet._id,
+        quantity: pet.quantity,
+        price: petAttributes.price,
+        total: petAttributes.price,
+      };
+      cart.items.push(petDetails);
+      await cart.save();
+      res.json(cart);
+    }
   }
-  // }
 );
 
 router.delete(
