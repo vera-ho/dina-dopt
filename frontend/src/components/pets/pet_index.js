@@ -35,7 +35,6 @@ const PetsIndex = props => {
     return (
         <div className="pets-index-container">
             <div className="pets-index-content">
-                {/* <h1>Dinos Available</h1> */}
                 <ul>
                     {petItems}
                 </ul>

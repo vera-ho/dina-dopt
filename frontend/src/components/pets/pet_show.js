@@ -20,7 +20,7 @@ const PetShow = props => {
         fetchPet();
         fetchPetReviews();
         fetchUsers();
-    }, [petId]);
+    }, []);
 
     const fetchPet = async () => {
         let pet = await getPet(petId);
@@ -48,7 +48,6 @@ const PetShow = props => {
         createReview(pet._id, review)
             .then( review => dispatch(receiveReview(review)),
             errors => dispatch(receiveErrors(errors)));
-            // .then( () => fetchPetReviews());
         setReviewText("");
         setReviewTitle("");
     }
@@ -59,13 +58,13 @@ const PetShow = props => {
         return dispatch(createCart(newCart.data));
     };
 
+            
+    const noReviews = (<li className="review-item">Be the first to leave a review!</li>);
     const reviewItems = reviews.map( (review, idx) => {
         let reviewUser;
         reviewUser = users.filter(user => user._id === review.user)[0]
 
-        return reviews.length === 0 ? (
-            <li>Be the first to leave a review!</li>
-        ) : (
+        return (
             <li className="review-item" key={idx}>
                 <p>Name: {reviewUser ? reviewUser.name : ""}</p>
                 <p>Title: {review.title}</p>
@@ -77,7 +76,6 @@ const PetShow = props => {
     if(!pet) {
         return null
     } else { 
-        // console.log(props);
         return (
             <div className="pet-show-container">
                 <div className="pet-show-content">
@@ -139,7 +137,7 @@ const PetShow = props => {
                     <div className="pet-reviews-index">
                         <h1>Reviews for {pet.name}</h1>
                         <ul>
-                            {reviewItems}
+                            {reviews.length > 0 ? reviewItems : noReviews}
                         </ul>
                     </div>
                 </div>
