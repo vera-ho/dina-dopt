@@ -7,10 +7,12 @@ import { fetchAllUsers } from "../../util/user_api_util";
 import { receiveAllReviewsForPet, receiveErrors, receiveReview } from "../../actions/review_actions";
 import { receiveAllUsers } from "../../actions/user_actions";
 import { receiveCart } from "../../actions/cart_actions";
+import { fetchCart } from "../../util/cart_api_util";
+import AddToCartButton from "../buttons/add_to_cart_button";
 
 const PetShow = props => {
     const dispatch = useDispatch(); 
-    const { pet, reviews, currentUser, users } = props;
+    const { pet, reviews, currentUser, users, cartItems } = props;
     const [reviewTitle, setReviewTitle] = useState("");
     const [reviewText, setReviewText] = useState("");
     const petId = props.match.params.pet_id;
@@ -20,7 +22,8 @@ const PetShow = props => {
         fetchPet();
         fetchPetReviews();
         fetchUsers();
-    }, [petId]);
+        fetchCartData();
+    }, []);
 
     const fetchPet = async () => {
         let pet = await getPet(petId);
@@ -35,6 +38,11 @@ const PetShow = props => {
     const fetchUsers = async () => {
         let users = await fetchAllUsers();
         dispatch(receiveAllUsers(users));
+    }
+
+    const fetchCartData = async () => {
+        let cart = await fetchCart();
+        dispatch(receiveCart(cart.data));
     }
 
     const submitReview = e => {
@@ -73,7 +81,7 @@ const PetShow = props => {
         )
     })
 
-    if(!pet) {
+    if(!pet || !cartItems) {
         return null
     } else { 
         return (
@@ -99,7 +107,10 @@ const PetShow = props => {
                                 <p>Type: {pet.petType}</p>
                                 <p>Price: {pet.price} DinoCoins</p>
                                 <p>Description: {pet.description}</p>
-                                <button onClick={addToCart} className="add-to-cart-button">Add {pet.name} to cart</button>
+                                <div className="show-page-atc-button">
+                                    <AddToCartButton petId={petId} cartItems={cartItems} />
+                                </div>
+                                {/* <button onClick={addToCart} className="add-to-cart-button">Add {pet.name} to cart</button> */}
                             </div> 
                         </div>  
                     </div>
