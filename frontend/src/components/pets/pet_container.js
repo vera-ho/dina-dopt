@@ -6,7 +6,8 @@ import { cartItemsArray } from '../../reducers/selector';
 const mSTP = state => {
     return {
         pets: Object.values(state.entities.pets),
-        cartItems: cartItemsArray(state)
+        cartItems: cartItemsArray(state),
+        
     }
 }
 

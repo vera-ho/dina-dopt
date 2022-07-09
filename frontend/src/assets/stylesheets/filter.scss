@@ -1,0 +1,46 @@
+.pets-index-filter-container {
+    // border: 1px dotted blue;
+    width: 100%;
+}
+
+.pets-index-filter-content {
+    padding: 40px 200px 0;
+
+    @media screen and (max-width: 1440px) {
+        padding: 40px 100px 0;
+    }
+}
+
+.pets-filter-by-name-type {
+    // border: 1px dashed orange;
+    padding-left: 30px;
+}
+
+
+
+.pets-index-filter-label {
+    // margin: 10px 0px;
+    font-family: $main-font-family;
+    font-size: 1rem;
+    color: $main-color;
+
+    input, 
+    textarea {
+        width: 370px;
+        padding: 10px 14px;
+        margin-top: 5px;
+
+        border-radius: 6px;
+
+        background-color: #fcfcfc;
+        border: 1px solid #ccc;
+
+        font-family: $main-font-family;
+        font-size: 1.1rem;
+        color: $theme-redish;
+
+        @media screen and (max-width: 1000px) {
+            width: 90%;
+        }
+    }
+}
