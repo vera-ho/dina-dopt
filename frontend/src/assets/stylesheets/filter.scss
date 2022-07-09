@@ -1,5 +1,4 @@
 .pets-index-filter-container {
-    // border: 1px dotted blue;
     width: 100%;
 }
 
@@ -12,14 +11,10 @@
 }
 
 .pets-filter-by-name-type {
-    // border: 1px dashed orange;
     padding-left: 30px;
 }
 
-
-
 .pets-index-filter-label {
-    // margin: 10px 0px;
     font-family: $main-font-family;
     font-size: 1rem;
     color: $main-color;
@@ -29,7 +24,6 @@
         width: 370px;
         padding: 10px 14px;
         margin-top: 5px;
-
         border-radius: 6px;
 
         background-color: #fcfcfc;
