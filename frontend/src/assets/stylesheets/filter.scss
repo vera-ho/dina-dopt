@@ -11,7 +11,7 @@
 }
 
 .pets-filter-by-name-type {
-    padding-left: 30px;
+    padding: 0 60px 0 30px;
 }
 
 .pets-index-filter-label {
@@ -21,7 +21,7 @@
 
     input, 
     textarea {
-        width: 370px;
+        width: 100%;
         padding: 10px 14px;
         margin-top: 5px;
         border-radius: 6px;
@@ -32,9 +32,5 @@
         font-family: $main-font-family;
         font-size: 1.1rem;
         color: $theme-redish;
-
-        @media screen and (max-width: 1000px) {
-            width: 90%;
-        }
     }
 }
