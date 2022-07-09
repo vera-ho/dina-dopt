@@ -1,7 +1,7 @@
 .pets-index-container {
     padding-top: 80px;
     width: 100%;
-    box-sizing: border-box;
+    min-height: calc(100vh - 80px);
     background-color: $theme-light;
 
     display: flex;
