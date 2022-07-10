@@ -6,17 +6,19 @@ const AboutUs = props => {
         name: "Vera Ho",
         dino: "https://cdn.discordapp.com/attachments/862515957842706475/995665506495381594/triceratops_blue.png",
         dinoalt: "blue-triceratops",
-        desc: "",
-        github: "",
-        linkedin: "",
-        angellist: "", 
+        desc1: "Hello! I am a senior electrical engineer turned software engineer based in NYC, and currently open to opportunities as a full-stack or backend engineer.",
+        desc2: "In addition to engineering, I love to hike, snowboard, and dabble in photography and sewing.",
+        github: "https://github.com/vh71886",
+        linkedin: "https://www.linkedin.com/in/veraho/",
+        angellist: "https://angel.co/u/vera-ho-1", 
         portfolio: "",
         plogo: "https://cdn.discordapp.com/attachments/862515957842706475/995683776728399922/icons8-woman-profile-64.png"
     }, {
         name: "Alan Ng",
         dino: "https://cdn.discordapp.com/attachments/862515957842706475/995665506696695829/triceratops_orange.png",
         dinoalt: "orange-triceratops",
-        desc: "",
+        desc1: "",
+        desc2: "",
         github: "",
         linkedin: "",
         angellist: "", 
@@ -26,7 +28,8 @@ const AboutUs = props => {
         name: "Mike Chen",
         dino: "https://cdn.discordapp.com/attachments/862515957842706475/995665507078393876/triceratops_red.png",
         dinoalt: "red-triceratops",
-        desc: "",
+        desc1: "",
+        desc2: "",
         github: "",
         linkedin: "",
         angellist: "", 
@@ -36,7 +39,8 @@ const AboutUs = props => {
         name: "Kevin Natera",
         dino: "https://cdn.discordapp.com/attachments/862515957842706475/995665506889637908/triceratops_purple.png",
         dinoalt: "purple-triceratops",
-        desc: "",
+        desc1: "",
+        desc2: "",
         github: "",
         linkedin: "",
         angellist: "", 
@@ -50,8 +54,9 @@ const AboutUs = props => {
                 <img src={developer.dino} 
                     alt={developer.dinoalt} />
                 <div className="developer-description">
-                    <p>{developer.name}</p>
-                    <p>{developer.desc}</p>
+                    <h1>{developer.name}</h1>
+                    <p>{developer.desc1}</p>
+                    <p>{developer.desc2}</p>
                 </div>
                 <div className="developer-contact-information">
                     <a href={developer.github}>

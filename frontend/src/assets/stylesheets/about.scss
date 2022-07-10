@@ -27,18 +27,24 @@
     font-size: $title-font-size;
     color: $main-color;
 
-    border: 1px white dotted;
+    // border: 1px white dotted;
 
 }
 
 .about-page-list-item > img {
     width: 270px;
-    border: 1px blue dashed;
+    // border: 1px blue dashed;
 }
 
 .developer-description {
-    border: 1px yellow solid;
+    // border: 1px yellow solid;
     width: 60%;
+    padding: 0 10px;
+    
+    p {
+        font-size: 25px;
+        padding-top: 10px;
+    }
 }
 
 .developer-contact-information {
