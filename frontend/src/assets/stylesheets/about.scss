@@ -6,20 +6,22 @@
 
 .about-page-content {
     padding: 50px 200px;
+
+    @media screen and (max-width: 1280px) {
+        padding: 50px 100px;
+    }
 }
 
 .about-page-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);   
-
-    @media screen and (max-width: 1440px) {
-        grid-template-columns: repeat(1, 1fr);
-    }
+    display: flex;
+    flex-direction: column;
 }
 
 .about-page-list-item {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 0;
 
     font-family: $main-font-family;
     font-size: $title-font-size;
@@ -27,12 +29,19 @@
 
     border: 1px white dotted;
 
-    // @media screen and (max-width: 1440px) {
-        
-    // }
 }
 
 .about-page-list-item > img {
-    width: 200px;
-    
+    width: 270px;
+    border: 1px blue dashed;
+}
+
+.developer-description {
+    border: 1px yellow solid;
+    width: 60%;
+}
+
+.developer-contact-information {
+    display: flex;
+    flex-direction: column;
 }
