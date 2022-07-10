@@ -3,3 +3,36 @@
     background-color: $theme-light;
     min-height: calc(100vh - 80px);
 }
+
+.about-page-content {
+    padding: 50px 200px;
+}
+
+.about-page-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);   
+
+    @media screen and (max-width: 1440px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.about-page-list-item {
+    display: flex;
+    flex-direction: row;
+
+    font-family: $main-font-family;
+    font-size: $title-font-size;
+    color: $main-color;
+
+    border: 1px white dotted;
+
+    // @media screen and (max-width: 1440px) {
+        
+    // }
+}
+
+.about-page-list-item > img {
+    width: 200px;
+    
+}
