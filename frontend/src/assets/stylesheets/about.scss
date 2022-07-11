@@ -12,6 +12,12 @@
     }
 }
 
+.about-page-project-link  a {
+    font-family: $main-font-family;
+    font-size: 24px;
+    color: $main-color;
+}
+
 .about-page-list {
     display: flex;
     flex-direction: column;

@@ -86,6 +86,11 @@ const AboutUs = props => {
     return (
         <div className="about-page-container">
             <div className="about-page-content">
+                <div className="about-page-project-link">
+                    <a href="https://github.com/vh71886/dina-dopt">
+                        Click here for the Dina-Dopt GitHub Repository
+                    </a>
+                </div>
                 <ul className="about-page-list">
                     {devItems}
                 </ul>
