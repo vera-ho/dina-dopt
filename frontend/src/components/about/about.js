@@ -3,7 +3,7 @@ import React from "react";
 const AboutUs = props => {
 
     const developers = [{
-        name: "Vera Ho",
+        name: "Vera Ho - Team Lead",
         dino: "https://cdn.discordapp.com/attachments/862515957842706475/995665506495381594/triceratops_blue.png",
         dinoalt: "blue-triceratops",
         desc1: "Hello! I am a senior electrical engineer turned software engineer based in NYC, and currently open to opportunities as a full-stack or backend engineer.",
@@ -14,14 +14,14 @@ const AboutUs = props => {
         portfolio: "",
         plogo: "https://cdn.discordapp.com/attachments/862515957842706475/995683776728399922/icons8-woman-profile-64.png"
     }, {
-        name: "Alan Ng",
+        name: "Alan Ng - FrontEnd Flex",
         dino: "https://cdn.discordapp.com/attachments/862515957842706475/995665506696695829/triceratops_orange.png",
         dinoalt: "orange-triceratops",
-        desc1: "",
-        desc2: "",
-        github: "",
-        linkedin: "",
-        angellist: "", 
+        desc1: "Hi! I am a software engineer with a passion for full-stack development. I love",
+        desc2: "Some hobbies include playing basketball, snowboarding, and recently - weightlifting. I also love traveling to new places and exploring new things.",
+        github: "https://github.com/AlanCLN",
+        linkedin: "https://www.linkedin.com/in/alan-cln/",
+        angellist: "https://angel.co/u/alan-cheuk-lun-ng",
         portfolio: "",
         plogo: "https://cdn.discordapp.com/attachments/862515957842706475/995683776090865734/icons8-user-64_1.png"
     }, {
