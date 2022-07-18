@@ -29,48 +29,65 @@ router.patch(
   '/',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
-    const { petId } = req.body;
+    const { pet } = req.body;
+    // console.log(pet);
     const user = req.user;
     let cart = await Cart.findOne({ userId: user._id });
-
-    let pet = Pet.findById(petId);
-    // const petIndex = cart.items.findIndex((item) => item.petId === pet.id);
-    // if (petIndex !== -1) {
-    //   cart.items[petIndex].quantity =
-    //     cart.items[petIndex].quantity + req.body.quantity;
-    //   cart.items[petIndex].total = cart.items[petIndex].quantity * pet.price;
-    //   cart.items[petIndex].price = pet.price;
-    //   cart.subTotal = cart.items
-    //     .map((item) => item.total)
-    //     .reduce((a, b) => a + b);
-    // } else {
+    let petAttributes = await Pet.findById(pet._id);
+    const petIndex = cart.items.findIndex((item) => item.petId == pet._id);
+    if (petIndex !== -1) {
+      cart.items[petIndex].quantity = cart.items[petIndex].quantity + 1;
+      cart.items[petIndex].total = cart.items[petIndex].quantity * pet.price;
+      cart.items[petIndex].price = pet.price;
+      cart.subTotal = cart.items
+        .map((item) => item.total)
+        .reduce((a, b) => a + b);
+      await cart.save();
+      res.json(cart);
+    } else {
       let petDetails = {
-        petId: petId,
-        quantity: Number.parseInt(req.body.quantity),
-        // price: pet.price,
-        // total: parseInt(pet.price) * parseInt(req.body.quantity),
+        name: petAttributes.name,
+        image_url: petAttributes.image_url,
+        petId: pet._id,
+        quantity: pet.quantity,
+        price: petAttributes.price,
+        total: petAttributes.price * pet.quantity,
       };
-
       cart.items.push(petDetails);
       await cart.save();
       res.json(cart);
     }
-  // }
+  }
 );
 
-router.delete('/',
+router.delete(
+  '/',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     const { petId } = req.body;
     const user = req.user;
     let cart = await Cart.findOne({ userId: user._id });
-
-    // let pet = Pet.findById(petId);
-    let cartItems = cart.items.filter((item) => item.petId != petId);
-    cart.items = cartItems
-
+    const petIndex = cart.items.findIndex((item) => item.petId == petId);
+    let newQuantity = cart.items[petIndex].quantity - 1;
+    if (newQuantity < 0) {
+      cart.items.splice(petIndex, 1);
+      if (cart.items.length === 0) {
+        cart.subTotal = 0;
+      } else {
+        cart.subTotal = cart.items
+          .map((item) => item.total)
+          .reduce((a, b) => a + b);
+      }
+    } else {
+      cart.items[petIndex].quantity = newQuantity;
+      cart.items[petIndex].total = newQuantity * cart.items[petIndex].price;
+      cart.subTotal = cart.items
+        .map((item) => item.total)
+        .reduce((a, b) => a + b);
+    }
     await cart.save();
     res.json(cart);
-});
+  }
+);
 
 module.exports = router;

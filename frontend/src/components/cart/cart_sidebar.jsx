@@ -21,6 +21,9 @@ const CartSidebar = (props) => {
 
     const { cartItemPets } = props;
     const cart = useSelector((state) => state.entities.cart);
+    console.log(cart)
+
+    if (!cart) return null;
 
     const handleCloseSidebar = (e) => {
         e.preventDefault();
