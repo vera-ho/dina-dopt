@@ -60,10 +60,18 @@ Users may also click on "Signup" to register a new account.
 Both login and signup forms will report any errors if the form does not receive the correct information.
 
 ### Pets
-Users are able to search pets by their names or pet types in the index page and see pet details on the pet details page. The pet details page will show the pet's name, type, description, and price. 
+Users are able to search pets by their names or pet types in the index page and see pet details on the pet details page. The pet details page will show the pet's name, type, description, price and any reviews from all users.
+
+The pet index page is shown below. The frontend retrieves all pets from MongoDB.
+![Pet Index](./frontend/src/assets/images/dina-dopt-index.png)
+
+Below is an example of the pet show page. 
+![Pet Details](./frontend/src/assets/images/dina-dopt-pet-details.png)
 
 ### Cart
 Pets can be added to the cart on both the pets index page and pet details page by clicking the `Add to Cart` button. 
 
+![Cart](./frontend/src/assets/images/dina-dopt-cart.png)
+
 ### Reviews
-Reviews are created and shown on the pet details page. 
+Reviews are created and shown on the pet details page. All reviews for a pet will be shown, regardless of reviewer.
