@@ -51,7 +51,6 @@ More information for each feature can be found below.
 ### Users
 Users are able to register for an account, login, and logout as needed on the website. The user authentication on the backend uses Express with BCrypt to secure password information. 
 
-
 ### Pets
 Users are able to search pets by their names or pet types in the index page and see pet details on the pet details page. The pet details page will show the pet's name, type, description, and price. 
 
