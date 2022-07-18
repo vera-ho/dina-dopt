@@ -20,6 +20,7 @@ const petsReducer = (state = {}, action) => {
                 {}
             );
             return nextState;
+
         case RECEIVE_PET:
             nextState[action.pet.data._id] = action.pet.data;
 
@@ -30,8 +31,8 @@ const petsReducer = (state = {}, action) => {
                 }, 
                 {}
             );
-
             return nextState;
+
         default:
             return state;
     }
