@@ -49,9 +49,9 @@ router.patch(
         name: petAttributes.name,
         image_url: petAttributes.image_url,
         petId: pet._id,
-        quantity: pet.quantity,
+        quantity: 1,
         price: petAttributes.price,
-        total: petAttributes.price * pet.quantity,
+        total: petAttributes.price * 1,
       };
       cart.items.push(petDetails);
       await cart.save();
