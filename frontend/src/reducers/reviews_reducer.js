@@ -11,10 +11,19 @@ const reviewsReducer = (state = {}, action) => {
       Object.assign(nextState, action.reviews.data);
       return nextState;
     case RECEIVE_REVIEW:
-      nextState[action.review.id] = action.review.data
+      let length = Object.values(nextState).length;
+      nextState[length] = action.review.data;
       return nextState;
     case REMOVE_REVIEW:
-      delete nextState[action.reviewId];
+      // debugger
+      // delete nextState[action.reviewId];
+      let reviews = Object.values(nextState);
+      reviews.forEach( (review, idx) => {
+        if(action.reviewId === review._id) {
+          delete nextState[idx];
+        }
+      })
+
       return nextState;
     default:
       return state;
