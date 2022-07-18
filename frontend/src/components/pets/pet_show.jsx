@@ -17,7 +17,6 @@ const PetShow = props => {
     const [reviewText, setReviewText] = useState("");
     const petId = props.match.params.pet_id;
 
-
     useEffect( () => {
         fetchPet();
         fetchPetReviews();
@@ -60,6 +59,10 @@ const PetShow = props => {
         setReviewTitle("");
     }
 
+    const deleteReview = e => {
+        e.preventDefault();
+    }
+
     const addToCart = async (e) => {
         e.preventDefault();
         let newCart = await addToCart(props.currentCart.id);
@@ -70,13 +73,23 @@ const PetShow = props => {
     const noReviews = (<li className="review-item">Be the first to leave a review!</li>);
     const reviewItems = reviews.map( (review, idx) => {
         let reviewUser;
-        reviewUser = users.filter(user => user._id === review.user)[0]
+        reviewUser = users.filter(user => user._id === review.user)[0];
 
         return (
             <li className="review-item" key={idx}>
-                <p>Name: {reviewUser ? reviewUser.name : ""}</p>
-                <p>Title: {review.title}</p>
-                <p>Review: {review.text}</p>
+                <div>
+                    <p>Name: {reviewUser ? reviewUser.name : ""}</p>
+                    <p>Title: {review.title}</p>
+                    <p>Review: {review.text}</p>
+                </div>
+
+                { reviewUser._id === currentUser.id ? (
+                    <div className="delete-review-button">
+                        <button onClick={deleteReview}>Delete Review</button>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
             </li>
         )
     })

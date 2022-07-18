@@ -118,8 +118,40 @@
 .review-item {
     font-size: 18px;
     padding: 5px 0;
+
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+    }
 }
 
 .review-item > p {
     margin: 3px 0;
+}
+
+.delete-review-button {
+    padding-top: 3px;
+
+    button {
+        font-family: $main-font-family;
+        font-size: 18px;
+        color: $main-color;
+
+        background-color: $theme-redish;
+        border-radius: 5px;
+        border: 2px solid $charcoal;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+        width: 200px;
+        height: 50px;
+    }
+
+    button:hover {
+        background-color: $theme-redish-hover;
+        width: 200px;
+        height: 50px;
+    }
 }
