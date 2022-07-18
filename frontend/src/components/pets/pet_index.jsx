@@ -11,7 +11,6 @@ const PetsIndex = props => {
     const dispatch = useDispatch();
     const { pets, cartItems } = props;
     const [filter, setFilter] = useState("");
-    const [priceFilter, setPriceFilter] = useState("");
 
     useEffect( () => {
         fetchData();

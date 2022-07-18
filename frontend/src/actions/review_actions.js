@@ -3,6 +3,7 @@ import * as ReviewUtil from '../util/reviews_api_util';
 export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 export const RECEIVE_ALL_REVIEWS_FOR_PET = "RECEIVE_ALL_REVIEWS_FOR_PET";
 export const RECEIVE_REVIEW_ERRORS = "RECEIVE_REVIEW_ERRORS";
+export const REMOVE_REVIEW = "REMOVE_REVIEW";
 
 
 export const receiveReview = review => ({
@@ -24,6 +25,11 @@ export const receiveErrors = errors => ({
     type: RECEIVE_REVIEW_ERRORS,
     errors
 });
+
+export const removeReview = reviewId => ({
+    type: REMOVE_REVIEW,
+    reviewId
+})
 
 
 export const createReview = (petId,review) => dispatch => (

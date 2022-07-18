@@ -59,8 +59,9 @@ const PetShow = props => {
         setReviewTitle("");
     }
 
-    const deleteReview = e => {
+    const deleteReview = async (e) => {
         e.preventDefault();
+        let review;
     }
 
     const addToCart = async (e) => {
@@ -73,7 +74,9 @@ const PetShow = props => {
     const noReviews = (<li className="review-item">Be the first to leave a review!</li>);
     const reviewItems = reviews.map( (review, idx) => {
         let reviewUser;
-        reviewUser = users.filter(user => user._id === review.user)[0];
+        reviewUser = (users.filter(user => user._id === review.user)[0]) || [];
+
+        console.log(reviewUser)
 
         return (
             <li className="review-item" key={idx}>
