@@ -1,0 +1,36 @@
+.pets-index-filter-container {
+    width: 100%;
+}
+
+.pets-index-filter-content {
+    padding: 40px 200px 0;
+
+    @media screen and (max-width: 1440px) {
+        padding: 40px 100px 0;
+    }
+}
+
+.pets-filter-by-name-type {
+    padding: 0 60px 0 30px;
+}
+
+.pets-index-filter-label {
+    font-family: $main-font-family;
+    font-size: 1rem;
+    color: $main-color;
+
+    input, 
+    textarea {
+        width: 100%;
+        padding: 10px 14px;
+        margin-top: 5px;
+        border-radius: 6px;
+
+        background-color: #fcfcfc;
+        border: 1px solid #ccc;
+
+        font-family: $main-font-family;
+        font-size: 1.1rem;
+        color: $theme-redish;
+    }
+}

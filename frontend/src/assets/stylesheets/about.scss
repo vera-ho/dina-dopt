@@ -3,3 +3,57 @@
     background-color: $theme-light;
     min-height: calc(100vh - 80px);
 }
+
+.about-page-content {
+    padding: 50px 200px;
+
+    @media screen and (max-width: 1280px) {
+        padding: 50px 100px;
+    }
+}
+
+.about-page-project-link  a {
+    font-family: $main-font-family;
+    font-size: 24px;
+    color: $main-color;
+}
+
+.about-page-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-page-list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px 0;
+
+    font-family: $main-font-family;
+    font-size: $title-font-size;
+    color: $main-color;
+
+    // border: 1px white dotted;
+
+}
+
+.about-page-list-item > img {
+    width: 270px;
+    // border: 1px blue dashed;
+}
+
+.developer-description {
+    // border: 1px yellow solid;
+    width: 60%;
+    padding: 0 10px;
+    
+    p {
+        font-size: 25px;
+        padding-top: 10px;
+    }
+}
+
+.developer-contact-information {
+    display: flex;
+    flex-direction: column;
+}
