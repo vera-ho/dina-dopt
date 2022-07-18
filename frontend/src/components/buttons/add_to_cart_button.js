@@ -6,29 +6,26 @@ import { useDispatch } from 'react-redux';
 const AddToCartButton = (props) => {
   const dispatch = useDispatch();
 
-  const { cartItems, pet } = props;
+  const { cartItems, petId } = props;
 
-  // console.log(cartItems, pet);
 
-  const [added, setAdded] = useState(() => {
-    return cartItems.includes(pet._id);
-  });
+  // const [added, setAdded] = useState(() => {
+  //   return cartItems.includes(pet._id);
+  // });
 
   const handleATC = async (e) => {
     e.preventDefault();
-    console.log('added')
-    setAdded(!added);
-    let newCart = await addToCart(pet);
-    console.log(newCart)
+    // setAdded(!added);
+    let newCart = await addToCart(petId);
     return dispatch(receiveCart(newCart.data));
   };
 
-  const handleRFC = async (e) => {
-    e.preventDefault();
-    setAdded(!added);
-    let newCart = await removeFromCart(pet._id);
-    return dispatch(receiveCart(newCart.data));
-  };
+  // const handleRFC = async (e) => {
+  //   e.preventDefault();
+  //   setAdded(!added);
+  //   let newCart = await removeFromCart(pet._id);
+  //   return dispatch(receiveCart(newCart.data));
+  // };
 
   const addButton = () => {
     return (
@@ -38,13 +35,13 @@ const AddToCartButton = (props) => {
     );
   };
 
-  const removeButton = () => {
-    return (
-      <div className="add-to-cart-button atc-card-button">
-        <button onClick={handleRFC}>Remove</button>
-      </div>
-    );
-  };
+  // const removeButton = () => {
+  //   return (
+  //     <div className="add-to-cart-button atc-card-button">
+  //       <button onClick={handleRFC}>Remove</button>
+  //     </div>
+  //   );
+  // };
 
   return addButton();
 };

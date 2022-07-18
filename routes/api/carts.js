@@ -29,13 +29,14 @@ router.patch(
   '/',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
-    const { pet } = req.body;
-    console.log('pet', pet);
+    const { petId } = req.body;
+    console.log(petId)
     const user = req.user;
     let cart = await Cart.findOne({ userId: user._id });
     console.log('cart', cart)
-    let petAttributes = await Pet.findById(pet._id);
-    const petIndex = cart.items.findIndex((item) => item.petId == pet._id);
+    let pet = await Pet.findById(petId);
+    console.log('pet:', pet)
+    const petIndex = cart.items.findIndex((item) => item.petId == petId);
     if (petIndex !== -1) {
       cart.items[petIndex].quantity = cart.items[petIndex].quantity + 1;
       cart.items[petIndex].total = cart.items[petIndex].quantity * pet.price;
@@ -47,12 +48,12 @@ router.patch(
       res.json(cart);
     } else {
       let petDetails = {
-        name: petAttributes.name,
-        image_url: petAttributes.image_url,
-        petId: pet._id,
+        name: pet.name,
+        image_url: pet.image_url,
+        petId: petId,
         quantity: 1,
-        price: petAttributes.price,
-        total: petAttributes.price * 1,
+        price: pet.price,
+        total: pet.price * 1,
       };
       cart.items.push(petDetails);
       await cart.save();
@@ -70,7 +71,7 @@ router.delete(
     let cart = await Cart.findOne({ userId: user._id });
     const petIndex = cart.items.findIndex((item) => item.petId == petId);
     let newQuantity = cart.items[petIndex].quantity - 1;
-    if (newQuantity < 0) {
+    if (newQuantity <= 0) {
       cart.items.splice(petIndex, 1);
       if (cart.items.length === 0) {
         cart.subTotal = 0;

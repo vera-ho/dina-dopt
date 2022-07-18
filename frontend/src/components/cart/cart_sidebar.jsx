@@ -5,6 +5,8 @@ import { receiveCart } from '../../actions/cart_actions';
 import { requestAllPets, receiveAllPets } from '../../actions/pet_actions';
 import { getPets } from '../../util/pet_util';
 import { addToCart } from '../../util/cart_api_util';
+import CartPlusButton from '../buttons/cart_plus_button';
+import CartMinusButton from '../buttons/cart_minus_button';
 
 const CartSidebar = (props) => {
   const dispatch = useDispatch();
@@ -32,31 +34,17 @@ const CartSidebar = (props) => {
     cartSidebar.classList.remove('active');
   };
 
-  const handleAddPetQty = (pet) => {
-    return async (e) => {
-      e.preventDefault();
-
-      let newCart = await addToCart(pet);
-      console.log(newCart);
-      return dispatch(receiveCart(newCart.data));
-
-      console.log('add');
-    };
+  const handleAddPetQty = async (pet) => {
+    let newCart = await addToCart(pet);
+    dispatch(receiveCart(newCart.data));
   };
 
-  const handleRemovePetQty = (pet) => {
-    return async (e) => {
-      e.preventDefault();
+  const handleRemovePetQty = async (pet) => {
+    // let newCart = await addToCart(pet);
+    // return dispatch(receiveCart(newCart.data));
 
-      // let newCart = await addToCart(pet);
-      // console.log(newCart)
-      // return dispatch(receiveCart(newCart.data));
-
-      console.log('remove');
-    };
+    console.log('remove');
   };
-
-  console.log(props);
 
   const totalPrice = () => {
     let sum = 0;
@@ -94,9 +82,9 @@ const CartSidebar = (props) => {
                 {/* <div className="item-quantity">{pet.quantity}</div> */}
                 <div className="cart-item-pet-qty-container">
                   <div className="pet-qty-content">
-                    <span onClick={handleRemovePetQty(pet)}>-</span>
+                    <CartMinusButton petId={pet.petId}/>
                     <p>{pet.quantity}</p>
-                    <span onClick={handleAddPetQty(pet)}>+</span>
+                    <CartPlusButton petId={pet.petId}/>
                   </div>
                 </div>
                 <div className="cart-item-pet-price-container">

@@ -10,7 +10,6 @@
 //         closeModal();
 
 //         const cartSidebar = document.getElementById("cart-sidebar-container")
-//         console.log(cartSidebar)
 //     }
 
 //     if (!modal) {
