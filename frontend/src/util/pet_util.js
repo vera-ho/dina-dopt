@@ -1,21 +1,16 @@
 import axios from 'axios';
 
-// internal use only
-export const addPet = petData => {
-    return axios.post('/api/pets', petData);
-}
-
 export const getPets = () => {
     return axios.get('/api/pets');
 }
 
 export const getPet = petId => {
     return axios.get(`/api/pets/${petId}`);
-    // return axios.get(`/api/pets`, { 
-    //     params: {
-    //         id: petId 
-    //     }
-    // });
+}
+
+// internal use only
+export const addPet = petData => {
+    return axios.post('/api/pets', petData);
 }
 
 // internal use only

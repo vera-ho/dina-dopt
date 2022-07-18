@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+
 import { receiveSinglePet } from "../../actions/pet_actions";
 import { getPet } from "../../util/pet_util";
-import { createReview, fetchAllReviewsForPet } from "../../util/reviews_api_util";
+
+import { createReview, fetchAllReviewsForPet, deleteSingleReview } from "../../util/reviews_api_util";
+import { receiveAllReviewsForPet, receiveErrors, receiveReview, removeReview } from "../../actions/review_actions";
+
 import { fetchAllUsers } from "../../util/user_api_util";
-import { receiveAllReviewsForPet, receiveErrors, receiveReview } from "../../actions/review_actions";
 import { receiveAllUsers } from "../../actions/user_actions";
+
 import { receiveCart } from "../../actions/cart_actions";
 import { fetchCart } from "../../util/cart_api_util";
 import AddToCartButton from "../buttons/add_to_cart_button";
@@ -16,7 +20,6 @@ const PetShow = props => {
     const [reviewTitle, setReviewTitle] = useState("");
     const [reviewText, setReviewText] = useState("");
     const petId = props.match.params.pet_id;
-
 
     useEffect( () => {
         fetchPet();
@@ -68,15 +71,31 @@ const PetShow = props => {
 
             
     const noReviews = (<li className="review-item">Be the first to leave a review!</li>);
+
     const reviewItems = reviews.map( (review, idx) => {
-        let reviewUser;
-        reviewUser = users.filter(user => user._id === review.user)[0]
+        let reviewUser = (users.filter(user => user._id === review.user)[0]) || [];
+
+        const deleteReview = (e) => {
+            e.preventDefault();
+            deleteSingleReview(review._id);
+            dispatch(removeReview(review._id));
+        }
 
         return (
             <li className="review-item" key={idx}>
-                <p>Name: {reviewUser ? reviewUser.name : ""}</p>
-                <p>Title: {review.title}</p>
-                <p>Review: {review.text}</p>
+                <div>
+                    <p>Name: {reviewUser ? reviewUser.name : ""}</p>
+                    <p>Title: {review.title}</p>
+                    <p>Review: {review.text}</p>
+                </div>
+
+                { reviewUser._id === currentUser.id ? (
+                    <div className="delete-review-button">
+                        <button onClick={deleteReview}>Delete Review</button>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
             </li>
         )
     })
@@ -110,7 +129,6 @@ const PetShow = props => {
                                 <div className="show-page-atc-button">
                                     <AddToCartButton petId={petId} cartItems={cartItems} />
                                 </div>
-                                {/* <button onClick={addToCart} className="add-to-cart-button">Add {pet.name} to cart</button> */}
                             </div> 
                         </div>  
                     </div>

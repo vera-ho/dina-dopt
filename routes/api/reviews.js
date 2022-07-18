@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const mongo = require('mongodb');
 const passport = require('passport');
 
 const Review = require('../../models/Review');
@@ -65,6 +66,15 @@ router.post('/pet/:pet_id',
    
     }
 );
+
+router.delete('/:id', (req, res) => {
+  Review.findOneAndDelete({ _id: req.params.id })
+  .then(res.status(200).json({ message: "Successful" }))
+  .catch(err => res.status(400).json({ error: err })
+);
+
+})
+
 
 
 module.exports = router;

@@ -16,7 +16,7 @@ const CartSidebar = (props) => {
         let cart = await fetchCart();
         dispatch(receiveCart(cart.data));
         let pets = await getPets();
-        dispatch(receiveAllPets(pets.data));
+        dispatch(receiveAllPets(pets));
     }
 
     const { cartItemPets } = props;
