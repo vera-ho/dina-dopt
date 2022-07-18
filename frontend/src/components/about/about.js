@@ -48,9 +48,9 @@ const AboutUs = props => {
         plogo: "icons8-user-64.png"
     }];
 
-    const devItems = developers.map( developer => {
+    const devItems = developers.map( (developer, idx) => {
         return (
-            <li className="about-page-list-item">
+            <li className="about-page-list-item" key={idx}>
                 <img src={require(`../../assets/images/${developer.dino}`)} alt={developer.dinoalt} />
                 <div className="developer-description">
                     <h1>{developer.name}</h1>
