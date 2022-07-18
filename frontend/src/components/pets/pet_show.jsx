@@ -73,8 +73,7 @@ const PetShow = props => {
     const noReviews = (<li className="review-item">Be the first to leave a review!</li>);
 
     const reviewItems = reviews.map( (review, idx) => {
-        let reviewUser;
-        reviewUser = (users.filter(user => user._id === review.user)[0]) || [];
+        let reviewUser = (users.filter(user => user._id === review.user)[0]) || [];
 
         const deleteReview = (e) => {
             e.preventDefault();
