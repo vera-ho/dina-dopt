@@ -80,7 +80,6 @@ const PetShow = props => {
             </li>
         )
     })
-    console.log('pet show cart items:', cartItems)
 
     if(!pet || !cartItems) {
         return null

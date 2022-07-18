@@ -21,7 +21,6 @@ const CartSidebar = (props) => {
 
     const { cartItemPets } = props;
     const cart = useSelector((state) => state.entities.cart);
-    console.log(cart)
 
     if (!cart) return null;
 
@@ -41,7 +40,6 @@ const CartSidebar = (props) => {
     }
 
     if (!cart || !cartItemPets) return null;
-    console.log('cart items:', cartItemPets)
 
     return (
         <div id="cart-sidebar-container">

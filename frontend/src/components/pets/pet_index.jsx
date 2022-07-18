@@ -19,12 +19,10 @@ const PetsIndex = (props) => {
     let pets = await getPets();
     dispatch(receiveAllPets(pets));
     let cart = await fetchCart();
-    console.log(cart.data);
     dispatch(receiveCart(cart.data));
   };
 
   // const cart = useSelector((state) => state.entities.cart);
-  console.log(pets);
 
   if (!pets || !cartItems) return null;
 
