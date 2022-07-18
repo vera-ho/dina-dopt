@@ -10,10 +10,4 @@ const mSTP = (state) => {
     }
 }
 
-const mDTP = (dispatch) => {
-    return {
-
-    }
-}
-
-export default connect(mSTP, mDTP)(CartSidebar);
+export default connect(mSTP)(CartSidebar);

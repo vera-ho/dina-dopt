@@ -15,6 +15,7 @@ const AddToCartButton = (props) => {
 
   const handleATC = async (e) => {
     e.preventDefault();
+    console.log('added')
     setAdded(!added);
     let newCart = await addToCart(petId);
     return dispatch(receiveCart(newCart.data));

@@ -36,7 +36,7 @@ const PetsIndex = props => {
                     <p>Pet Type: {pet.petType}</p>
                 </div>
                 <div className="hidden-card-layer">
-                    <AddToCartButton petId={pet._id} cartItems={cartItems} />
+                    <AddToCartButton petId={pet._id} cartItems={cartItems} key={idx}/>
                 </div>
             </Link>
         </li>

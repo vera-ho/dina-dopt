@@ -38,6 +38,7 @@ const CartSidebar = (props) => {
     }
 
     if (!cart || !cartItemPets) return null;
+    console.log('cart items:', cartItemPets)
 
     return (
         <div id="cart-sidebar-container">
@@ -54,9 +55,9 @@ const CartSidebar = (props) => {
                         <div className="cart-item-price-header">$$$</div>
                     </div>
                     {
-                        cartItemPets.map(pet => {
+                        cartItemPets.map((pet, idx) => {
                             return (
-                                <div className="cart-item-pet-info" key={pet._id}>
+                                <div className="cart-item-pet-info" key={idx}>
                                     <div className="cart-item-pet-name-container">
                                         <p>{pet.name}</p>
                                     </div>

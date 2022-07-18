@@ -60,11 +60,11 @@ const PetShow = props => {
         setReviewTitle("");
     }
 
-    const addToCart = async (e) => {
-        e.preventDefault();
-        let newCart = await addToCart(props.currentCart.id);
-        return dispatch(receiveCart(newCart.data));
-    };
+    // const addToCart = async (e) => {
+    //     e.preventDefault();
+    //     let newCart = await addToCart(props.currentCart.id);
+    //     return dispatch(receiveCart(newCart.data));
+    // };
 
             
     const noReviews = (<li className="review-item">Be the first to leave a review!</li>);
@@ -80,6 +80,7 @@ const PetShow = props => {
             </li>
         )
     })
+    console.log('pet show cart items:', cartItems)
 
     if(!pet || !cartItems) {
         return null
