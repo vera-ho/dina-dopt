@@ -30,9 +30,10 @@ router.patch(
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     const { pet } = req.body;
-    // console.log(pet);
+    console.log('pet', pet);
     const user = req.user;
     let cart = await Cart.findOne({ userId: user._id });
+    console.log('cart', cart)
     let petAttributes = await Pet.findById(pet._id);
     const petIndex = cart.items.findIndex((item) => item.petId == pet._id);
     if (petIndex !== -1) {

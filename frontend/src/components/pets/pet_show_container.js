@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { cartItemsArray } from "../../reducers/selector";
 import PetsShow from "./pet_show";
 
 const mSTP = (state, ownProps) => {
@@ -18,7 +19,8 @@ const mSTP = (state, ownProps) => {
         pet:  pets[petIdx],
         reviews: reviews,
         users: Object.values(state.entities.users),
-        currentUser: state.session.user
+        currentUser: state.session.user,
+        cartItems: cartItemsArray(state)
     }
 }
 
