@@ -19,6 +19,7 @@ const AddToCartButton = (props) => {
     console.log('added')
     setAdded(!added);
     let newCart = await addToCart(pet);
+    console.log(newCart)
     return dispatch(receiveCart(newCart.data));
   };
 
