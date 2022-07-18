@@ -71,9 +71,7 @@ router.delete('/:id', (req, res) => {
   Review.findOneAndDelete({_id: req.params.id})
   //delete works but rest does not
   .then(res => res.json(res))
-  .catch(err =>
-      res.status(404).json({ error: 'Error' }
-  )
+  .catch(err => res.status(404).json({ error: err })
 );
 
 })
