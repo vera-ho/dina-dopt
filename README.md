@@ -49,7 +49,15 @@ Key features for the completed project, including 1 full `CRUD` cycle:
 More information for each feature can be found below.
 
 ### Users
-Users are able to register for an account, login, and logout as needed on the website. The user authentication on the backend uses Express with BCrypt to secure password information. 
+Users are able to register for an account, login, and logout as needed on the website. The user authentication on the backend uses Express with BCrypt to secure password information. When the user goes to the root directory of the web application, there will be an option to log in along with a demo user log in option.
+
+![Splash Page](./frontend/src/assets/images/dina-dopt-splash.png)
+
+Users may also click on "Signup" to register a new account.
+
+![Signup](./frontend/src/assets/images/dina-dopt-signup.png)
+
+Both login and signup forms will report any errors if the form does not receive the correct information.
 
 ### Pets
 Users are able to search pets by their names or pet types in the index page and see pet details on the pet details page. The pet details page will show the pet's name, type, description, and price. 
