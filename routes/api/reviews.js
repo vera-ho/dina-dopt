@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const mongo = require('mongodb');
 const passport = require('passport');
 
 const Review = require('../../models/Review');
@@ -65,6 +66,30 @@ router.post('/pet/:pet_id',
    
     }
 );
+
+router.delete('/:id', (req, res) => {
+  let id = req.params.id;
+  let collection = db.get().collection('reviews');
+
+  collection.deleteOne( {_id: new mongo.ObjectId(id) }, (err, results) => {
+  })
+
+  res.json({ success: id })
+  // Review.findById(req.params.id)
+  // // Review.find({id: req.params.id})
+  //   .then()
+  //   .catch(err => res.status(404).json({ reviewNotFound: "Review could not be deleted" }))
+})
+
+router.delete('/api/menu/delete/:id', function (req, res) {
+  var id = req.params.id;
+  var collection = db.get().collection('menu');
+
+  collection.deleteOne({ _id: new mongo.ObjectId(id) }, function (err, results) {
+  });
+
+  res.json({ success: id })
+});
 
 
 module.exports = router;
