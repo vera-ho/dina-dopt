@@ -50,7 +50,6 @@ router.patch(
         // price: pet.price,
         // total: parseInt(pet.price) * parseInt(req.body.quantity),
       };
-
       cart.items.push(petDetails);
       await cart.save();
       res.json(cart);
