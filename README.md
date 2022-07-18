@@ -71,7 +71,7 @@ Below is an example of the pet show page.
 ### Cart
 Pets can be added to the cart on both the pets index page and pet details page by clicking the `Add to Cart` button. 
 
-![Cart](./frontend/src/assets/images/dina-dopt-cart.png)
+![Cart](./frontend/src/assets/images/dina-dopt-cart-small.png)
 
 ### Reviews
 Reviews are created and shown on the pet details page. All reviews for a pet will be shown, regardless of reviewer.
