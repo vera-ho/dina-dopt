@@ -59,23 +59,19 @@ const AboutUs = props => {
                 </div>
                 <div className="developer-contact-information">
                     <a href={developer.github}>
-                        <img src="https://cdn.discordapp.com/attachments/862515957842706475/995683775642079273/icons8-github-64.png"
-                            alt="github-logo" />
+                        <img src={require(`../../assets/images/icons8-github-64.png`)} alt="github-logo" />
                     </a>
 
                     <a href={developer.linkedin}>
-                        <img src="https://cdn.discordapp.com/attachments/862515957842706475/995683775872778280/icons8-linkedin-circled-64.png"
-                            alt="linkedin-logo" />
+                        <img src={require(`../../assets/images/icons8-linkedin-circled-64.png`)} alt="linkedin-logo" />
                     </a>
 
                     <a href={developer.angellist}>
-                        <img src="https://cdn.discordapp.com/attachments/862515957842706475/995683775092637706/icons8-angellist-64.png"
-                            alt="angellist-logo" />
+                        <img src={require(`../../assets/images/icons8-angellist-64.png`)} alt="angellist-logo" />
                     </a>
 
                     <a href={developer.portfolio}>
-                        <img src={require(`../../assets/images/${developer.plogo}`)}
-                            alt="portfolio-logo" />
+                        <img src={require(`../../assets/images/${developer.plogo}`)} alt="portfolio-logo" />
                     </a>
                 </div>
             </li>
