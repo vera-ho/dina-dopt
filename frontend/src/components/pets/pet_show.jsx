@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+
 import { receiveSinglePet } from "../../actions/pet_actions";
 import { getPet } from "../../util/pet_util";
-import { createReview, fetchAllReviewsForPet } from "../../util/reviews_api_util";
+
+import { createReview, fetchAllReviewsForPet, deleteSingleReview } from "../../util/reviews_api_util";
+import { receiveAllReviewsForPet, receiveErrors, receiveReview, removeReview } from "../../actions/review_actions";
+
 import { fetchAllUsers } from "../../util/user_api_util";
-import { receiveAllReviewsForPet, receiveErrors, receiveReview } from "../../actions/review_actions";
 import { receiveAllUsers } from "../../actions/user_actions";
+
 import { receiveCart } from "../../actions/cart_actions";
 import { fetchCart } from "../../util/cart_api_util";
 import AddToCartButton from "../buttons/add_to_cart_button";
@@ -59,11 +63,6 @@ const PetShow = props => {
         setReviewTitle("");
     }
 
-    const deleteReview = async (e) => {
-        e.preventDefault();
-        let review;
-    }
-
     const addToCart = async (e) => {
         e.preventDefault();
         let newCart = await addToCart(props.currentCart.id);
@@ -72,11 +71,16 @@ const PetShow = props => {
 
             
     const noReviews = (<li className="review-item">Be the first to leave a review!</li>);
+
     const reviewItems = reviews.map( (review, idx) => {
         let reviewUser;
         reviewUser = (users.filter(user => user._id === review.user)[0]) || [];
 
-        console.log(reviewUser)
+        const deleteReview = (e) => {
+            e.preventDefault();
+            deleteSingleReview(review._id);
+            dispatch(removeReview(review._id));
+        }
 
         return (
             <li className="review-item" key={idx}>
@@ -126,7 +130,6 @@ const PetShow = props => {
                                 <div className="show-page-atc-button">
                                     <AddToCartButton petId={petId} cartItems={cartItems} />
                                 </div>
-                                {/* <button onClick={addToCart} className="add-to-cart-button">Add {pet.name} to cart</button> */}
                             </div> 
                         </div>  
                     </div>
