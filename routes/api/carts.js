@@ -30,12 +30,9 @@ router.patch(
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     const { petId } = req.body;
-    console.log(petId)
     const user = req.user;
     let cart = await Cart.findOne({ userId: user._id });
-    console.log('cart', cart)
     let pet = await Pet.findById(petId);
-    console.log('pet:', pet)
     const petIndex = cart.items.findIndex((item) => item.petId == petId);
     if (petIndex !== -1) {
       cart.items[petIndex].quantity = cart.items[petIndex].quantity + 1;
@@ -62,8 +59,8 @@ router.patch(
   }
 );
 
-router.delete(
-  '/',
+router.patch(
+  '/remove_one',
   passport.authenticate('jwt', { session: false }),
   async (req, res) => {
     const { petId } = req.body;
@@ -91,5 +88,18 @@ router.delete(
     res.json(cart);
   }
 );
+
+router.patch(
+  '/remove_all',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+  const { petId } = req.body;
+  const user = req.user;
+  let cart = await Cart.findOne({ userId: user._id });
+  let pet = Pet.findById(petId);
+  cart.items.filter((item) => item.petId !== petId);
+  await cart.save();
+  res.json(cart);
+});
 
 module.exports = router;

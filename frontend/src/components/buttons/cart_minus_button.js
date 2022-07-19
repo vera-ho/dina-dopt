@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addToCart, removeFromCart } from '../../util/cart_api_util';
+import { addToCart, removeOneFromCart } from '../../util/cart_api_util';
 import { receiveCart } from '../../actions/cart_actions';
 import { useDispatch } from 'react-redux';
 
@@ -11,7 +11,7 @@ const CartMinusButton = (props) => {
 
   const handleRemovePetQty = async (e) => {
     e.preventDefault();
-    let newCart = await removeFromCart(petId);
+    let newCart = await removeOneFromCart(petId);
     return dispatch(receiveCart(newCart.data));
   };
 

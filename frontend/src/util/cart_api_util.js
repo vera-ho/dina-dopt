@@ -14,12 +14,22 @@ export const addToCart = (petId) => {
   })
 };
 
-export const removeFromCart = (petId) => {
+export const removeOneFromCart = (petId) => {
   return axios({
-    url: "/api/cart",
-    method: 'DELETE',
+    url: "/api/cart/remove_one",
+    method: 'PATCH',
     data: {
       petId: petId
     }
   })
 };
+
+export const removeAllFromCart = (petId) => {
+  return axios({
+    url: "/api/cart/remove_all",
+    method: 'PATCH',
+    data: {
+      petId: petId
+    }
+  })
+}

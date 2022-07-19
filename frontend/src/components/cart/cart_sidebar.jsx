@@ -7,6 +7,7 @@ import { getPets } from '../../util/pet_util';
 import { addToCart } from '../../util/cart_api_util';
 import CartPlusButton from '../buttons/cart_plus_button';
 import CartMinusButton from '../buttons/cart_minus_button';
+import removeAllButton from '../buttons/remove_all_button';
 
 const CartSidebar = (props) => {
   const dispatch = useDispatch();
