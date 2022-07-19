@@ -6,7 +6,7 @@ const AboutUs = props => {
         name: "Vera Ho - Team Lead",
         dino: "triceratops_blue.png",
         dinoalt: "blue-triceratops",
-        desc1: "Hello! I am a senior electrical engineer turned software engineer based in NYC, and currently open to opportunities as a full-stack or backend engineer.",
+        desc1: "Hello! I am a senior electrical engineer turned software engineer based in NYC. I have a passion for creation and problem solving regardless of the medium.",
         desc2: "In addition to engineering, I love to hike, snowboard, and dabble in photography and sewing.",
         github: "https://github.com/vh71886",
         linkedin: "https://www.linkedin.com/in/veraho/",
