@@ -61,6 +61,14 @@ const CartSidebar = (props) => {
           <p>Cart ({cartItemPets.length})</p>
         </div>
       </div>
+      {cartItemPets.length === 0 &&
+        <div className="no-cart-items-filler">
+          <p>
+            Your cart is empty
+          </p>
+        </div>
+      }
+      {cartItemPets.length > 0 &&
       <div className="cart-sidebar-pets-container">
         <div className="cart-sidebar-pets-content">
           <div className="cart-item-header">
@@ -98,6 +106,7 @@ const CartSidebar = (props) => {
           </div>
         </div>
       </div>
+      }
     </div>
   );
 };
