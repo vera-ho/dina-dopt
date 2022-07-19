@@ -60,19 +60,19 @@ const AboutUs = props => {
                     </div>
                 </div>
                 <div className="developer-contact-information">
-                    <a href={developer.github}>
+                    <a href={developer.github} target="_blank" rel="noopener noreferrer">
                         <img src={require(`../../assets/images/icons8-github-64.png`)} alt="github-logo" />
                     </a>
 
-                    <a href={developer.linkedin}>
+                    <a href={developer.linkedin} target="_blank" rel="noopener noreferrer">
                         <img src={require(`../../assets/images/icons8-linkedin-circled-64.png`)} alt="linkedin-logo" />
                     </a>
 
-                    <a href={developer.angellist}>
+                    <a href={developer.angellist} target="_blank" rel="noopener noreferrer">
                         <img src={require(`../../assets/images/icons8-angellist-64.png`)} alt="angellist-logo" />
                     </a>
 
-                    <a href={developer.portfolio}>
+                    <a href={developer.portfolio} target="_blank" rel="noopener noreferrer">
                         <img src={require(`../../assets/images/${developer.plogo}`)} alt="portfolio-logo" />
                     </a>
                 </div>
@@ -84,7 +84,7 @@ const AboutUs = props => {
         <div className="about-page-container">
             <div className="about-page-content">
                 <div className="about-page-project-link">
-                    <a href="https://github.com/vh71886/dina-dopt">
+                    <a href="https://github.com/vh71886/dina-dopt" target="_blank" rel="noopener noreferrer">
                         Click here for the Dina-Dopt GitHub Repository
                     </a>
                 </div>
