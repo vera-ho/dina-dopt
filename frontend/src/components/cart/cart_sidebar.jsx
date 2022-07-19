@@ -7,7 +7,7 @@ import { getPets } from '../../util/pet_util';
 import { addToCart } from '../../util/cart_api_util';
 import CartPlusButton from '../buttons/cart_plus_button';
 import CartMinusButton from '../buttons/cart_minus_button';
-import removeAllButton from '../buttons/remove_all_button';
+import RemoveAllButton from '../buttons/remove_all_button';
 
 const CartSidebar = (props) => {
   const dispatch = useDispatch();
@@ -40,13 +40,6 @@ const CartSidebar = (props) => {
     dispatch(receiveCart(newCart.data));
   };
 
-  const handleRemovePetQty = async (pet) => {
-    // let newCart = await addToCart(pet);
-    // return dispatch(receiveCart(newCart.data));
-
-    console.log('remove');
-  };
-
   const totalPrice = () => {
     let sum = 0;
     cartItemPets.forEach((pet) => {
@@ -77,6 +70,7 @@ const CartSidebar = (props) => {
           {cartItemPets.map((pet, idx) => {
             return (
               <div className="cart-item-pet-info" key={idx}>
+                <RemoveAllButton petId={pet.petId}/>
                 <div className="cart-item-pet-name-container">
                   <p>{pet.name}</p>
                 </div>

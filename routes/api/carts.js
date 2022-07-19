@@ -97,7 +97,19 @@ router.patch(
   const user = req.user;
   let cart = await Cart.findOne({ userId: user._id });
   let pet = Pet.findById(petId);
-  cart.items.filter((item) => item.petId !== petId);
+  let newCartItems = cart.items.filter((item) => item.petId != petId);
+  cart.items = newCartItems;
+  await cart.save();
+  res.json(cart);
+});
+
+router.delete(
+  '/clear',
+  passport.authenticate('jwt', { session: false }),
+  async (req, res) => {
+  const user = req.user;
+  let cart = await Cart.findOne({ userId: user._id });
+  cart.items = [];
   await cart.save();
   res.json(cart);
 });

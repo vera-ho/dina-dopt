@@ -33,3 +33,10 @@ export const removeAllFromCart = (petId) => {
     }
   })
 }
+
+export const clearCart = () => {
+  return axios({
+    url: "/api/cart/clear",
+    method: 'DELETE',
+  })
+}

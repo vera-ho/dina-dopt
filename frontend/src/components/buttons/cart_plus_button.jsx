@@ -7,7 +7,6 @@ const CartPlusButton = (props) => {
   const dispatch = useDispatch();
 
   const { petId } = props;
-  console.log('plus button pet', petId)
 
   const handleAddPetQty = async (e) => {
     e.preventDefault();

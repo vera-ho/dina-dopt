@@ -7,12 +7,11 @@ const CartMinusButton = (props) => {
   const dispatch = useDispatch();
 
   const { petId } = props;
-  console.log('minus button pet', petId)
 
   const handleRemovePetQty = async (e) => {
     e.preventDefault();
     let newCart = await removeOneFromCart(petId);
-    return dispatch(receiveCart(newCart.data));
+    dispatch(receiveCart(newCart.data));
   };
 
   return (
