@@ -8,6 +8,7 @@ import { addToCart } from '../../util/cart_api_util';
 import CartPlusButton from '../buttons/cart_plus_button';
 import CartMinusButton from '../buttons/cart_minus_button';
 import RemoveAllButton from '../buttons/remove_all_button';
+import CheckoutButton from '../buttons/checkout_button';
 
 const CartSidebar = (props) => {
   const dispatch = useDispatch();
@@ -93,6 +94,7 @@ const CartSidebar = (props) => {
               <div className="price-header">Total Price</div>
               <div className="total-price">${totalPrice()}</div>
             </div>
+            <CheckoutButton />
           </div>
         </div>
       </div>
