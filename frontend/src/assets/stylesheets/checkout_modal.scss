@@ -1,0 +1,54 @@
+.modal-background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.modal-child {
+    position: absolute;
+}
+
+.checkout-popup-container {
+    width: 400px;
+    overflow: hidden;
+
+    border-radius: 12px;
+    border: 2px solid $theme-border;
+
+    color: white;
+    font-family: $main-font-family;
+}
+
+.checkout-popup-header {
+    background-color: $theme;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 30px;
+}
+
+.checkout-popup-thanks {
+    background-color: $theme-light;
+    box-sizing: border-box;
+    
+    height: 120px;
+    padding: 15px;
+
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+    
+}

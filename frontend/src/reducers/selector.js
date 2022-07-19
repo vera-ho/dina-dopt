@@ -33,13 +33,16 @@ export const cartItemPets = (state, pets) => {
         return null
     }
     const cartItems = state.entities.cart.items;
+    // debugger
     cartItems.forEach(item => {
         pets.forEach(pet => {
+            // debugger
             if (pet._id === item.petId) {
                 result.push(pet)
             }
         })
     })
+    // debugger
     return result;
 }
 
