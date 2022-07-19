@@ -39,11 +39,11 @@ const AboutUs = props => {
         name: "Kevin Natera - BackEnd Flex",
         dino: "triceratops_purple.png",
         dinoalt: "purple-triceratops",
-        desc1: "",
-        desc2: "",
-        github: "",
-        linkedin: "",
-        angellist: "", 
+        desc1: "Hey! My name is Kevin and I'm a full stack software engineer located in New York City. Finding creative solutions to difficult problems really appeals to me.",
+        desc2: "In my free time I enjoy gaming, solving puzzles, and cardistry. Honing your skills and seeing yourself improve over time simply feels amazing.",
+        github: "https://github.com/KevinNatera",
+        linkedin: "https://www.linkedin.com/in/kevin-n-916683190/",
+        angellist: "https://angel.co/u/kevin-natera", 
         portfolio: "",
         plogo: "icons8-user-64.png"
     }];
