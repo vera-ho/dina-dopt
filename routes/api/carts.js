@@ -75,14 +75,14 @@ router.patch(
       } else {
         cart.subTotal = cart.items
           .map((item) => item.total)
-          .reduce((a, b) => a + b);
+          .reduce((acc, el) => acc + el);
       }
     } else {
       cart.items[petIndex].quantity = newQuantity;
       cart.items[petIndex].total = newQuantity * cart.items[petIndex].price;
       cart.subTotal = cart.items
         .map((item) => item.total)
-        .reduce((a, b) => a + b);
+        .reduce((acc, el) => acc + el);
     }
     await cart.save();
     res.json(cart);
@@ -99,6 +99,13 @@ router.patch(
   let pet = Pet.findById(petId);
   let newCartItems = cart.items.filter((item) => item.petId != petId);
   cart.items = newCartItems;
+  if (cart.items.length === 0) {
+    cart.subTotal = 0;
+  } else {
+    cart.subTotal = cart.items
+      .map((item) => item.total)
+      .reduce((acc, el) => acc + el);
+  }
   await cart.save();
   res.json(cart);
 });
@@ -110,6 +117,7 @@ router.delete(
   const user = req.user;
   let cart = await Cart.findOne({ userId: user._id });
   cart.items = [];
+  cart.subTotal = 0;
   await cart.save();
   res.json(cart);
 });

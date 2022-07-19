@@ -13,8 +13,6 @@ const ItemSchema = new Schema(
     petId: {
       type: Schema.Types.ObjectId,
       ref: 'Pet',
-      unique: true,
-      dropDups: true,
     },
     quantity: {
       type: Number,
