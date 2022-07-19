@@ -4,9 +4,8 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
-import { login, logout } from './actions/session_actions';
+import { logout } from './actions/session_actions';
 import './assets/stylesheets/main.scss';
-import { openModal } from './actions/modal_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -29,5 +28,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   ReactDOM.render(<Root store={store} />, root);
-  // store.dispatch(login({ email: "demo@demo.com", password: "password" }))
 });
