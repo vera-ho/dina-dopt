@@ -128,7 +128,7 @@
         align-items: center;
 
         box-sizing: border-box;
-        padding-left: 20px;
+        padding-left: 10px;
     }
 
     .cart-item-pet-price-container {
@@ -204,8 +204,34 @@
 
         padding-right: 20px;
     }
+}
+
+.remove-pet-item-container {
+    width: 8%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
+.remove-pet-item-button {
+    width: 60%;
+    height: 60%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    background-color: $theme-redish;
+    border-radius: 6px;
+    border: 3px solid $brown;
 
+    cursor: pointer;
+
+    font-size: 34px;
+}
+
+.remove-pet-item-button:hover {
+    background-color: $theme-redish-hover;
+}
