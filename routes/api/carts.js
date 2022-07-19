@@ -40,7 +40,7 @@ router.patch(
       cart.items[petIndex].price = pet.price;
       cart.subTotal = cart.items
         .map((item) => item.total)
-        .reduce((a, b) => a + b);
+        .reduce((acc, el) => acc + el);
       await cart.save();
       res.json(cart);
     } else {

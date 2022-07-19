@@ -7,7 +7,7 @@ Dina-Dopt is a MERN stack web application that allows users to adopt and review 
 
 More information for each feature can be found below.
 
-### Users
+## Users
 Users are able to register for an account, login, and logout as needed on the website. The user authentication on the backend uses Express with BCrypt to secure password information. When the user goes to the root directory of the web application, there will be an option to log in along with a demo user log in option.
 
 ![Splash Page](./frontend/src/assets/images/dina-dopt-splash.png)
@@ -18,7 +18,7 @@ Users may also click on "Signup" to register a new account.
 
 Both login and signup forms will report any errors if the form does not receive the correct information.
 
-### Technologies Used
+## Technologies Used
 * Frontend: `React and Redux`
     - `react-redux`
     - `redux-thunk`
@@ -59,7 +59,7 @@ Key features for the completed project, including 1 full `CRUD` cycle:
     - Reviews for a pet can be written on the pet's details page
     - To create a review, a user must be logged in
 
-### Pets
+## Pets
 Users are able to search pets by their names or pet types in the index page and see pet details on the pet details page. The pet details page will show the pet's name, type, description, price and any reviews from all users.
 
 The pet index page is shown below. The frontend retrieves all pets from MongoDB.
@@ -68,8 +68,17 @@ The pet index page is shown below. The frontend retrieves all pets from MongoDB.
 Below is an example of the pet show page. 
 ![Pet Details](./frontend/src/assets/images/dina-dopt-pet-details.png)
 
-### Cart
+## Cart
 Pets can be added to the cart on both the pets index page and pet details page by clicking the `Add to Cart` button. You can add more quantity to a pet and
 remove a pet from the cart.
 
 ![Cart](./frontend/src/assets/images/cart-feature.png)
+
+## Code Snippets
+Below is a code snippet of our route when we click the 'Add to Cart' button. We are passing in a petId as data and checking to see if that petId is in the
+cart already. If it is not in the cart, we will simply add it to cart with a quantity of one. If it is in the cart, we will increase the quantity of that pet by one.
+
+
+![Cart Snippet](./frontend/src/assets/images/cart_code_snippet.png)
+
+

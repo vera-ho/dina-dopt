@@ -18,10 +18,10 @@ const CartSidebar = (props) => {
   }, []);
 
   const fetchData = async () => {
-      let cart = await fetchCart();
-      dispatch(receiveCart(cart.data));
-      let pets = await getPets();
-      dispatch(receiveAllPets(pets));
+    let cart = await fetchCart();
+    dispatch(receiveCart(cart.data));
+    let pets = await getPets();
+    dispatch(receiveAllPets(pets));
   }
 
   const { cartItemPets } = props;
