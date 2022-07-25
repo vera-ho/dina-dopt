@@ -15,9 +15,15 @@ const AddToCartButton = (props) => {
 
   const handleATC = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
     // setAdded(!added);
     let newCart = await addToCart(petId);
-    return dispatch(receiveCart(newCart.data));
+    dispatch(receiveCart(newCart.data));
+
+    if (cartItems.length === 0) {
+      const cartSidebar = document.getElementById("cart-sidebar-container")
+      cartSidebar.classList.add('active')
+    }
   };
 
   // const handleRFC = async (e) => {

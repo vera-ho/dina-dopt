@@ -62,12 +62,36 @@
     
         font-size: inherit;
 
-        transition: 0.2s;
     }
+}
 
-    button:hover {
-        transform: scale(1.1);
-    }
+.my-cart-container {
+    position: relative;
+
+    transition: 0.2s;
+}
+
+.my-cart-container:hover {
+    transform: scale(1.1);
+}
+
+.cart-notification-container {
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    height: 20px;
+    width: 20px;
+
+    bottom: -10%;
+    right: -10%;
+
+    background-color: $theme-redish;
+    font-size: 16px;
 }
 
 .unauth-links {

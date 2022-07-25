@@ -107,8 +107,15 @@ const AboutUs = (props) => {
     );
   });
 
+  const handleCloseSidebar = (e) => {
+    e.stopPropagation();
+
+    const cartSidebar = document.getElementById("cart-sidebar-container")
+    cartSidebar.classList.remove('active')
+  }
+
   return (
-    <div className="about-page-container">
+    <div className="about-page-container" onClick={handleCloseSidebar}>
       <div className="about-page-content">
         <div className="about-page-project-link">
           <a href="https://github.com/vh71886/dina-dopt" target="_blank" rel="noopener noreferrer">

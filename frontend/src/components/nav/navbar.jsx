@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import CartSidebarContainer from '../cart/cart_sidebar_container';
+import { fetchCart } from '../../util/cart_api_util';
+import { receiveCart } from '../../actions/cart_actions';
 
 const NavBar = props => {
+
+    const dispatch = useDispatch();
+
+    const { cartItems } = props;
+
+    useEffect(() => {
+        fetchCartData();
+    }, [])
+
+    const fetchCartData = async () => {
+        let cart = await fetchCart();
+        dispatch(receiveCart(cart.data));
+    }
 
     const logoutUser = e => {
         e.preventDefault();
@@ -21,7 +37,14 @@ const NavBar = props => {
             return (
                 <div className="auth-links">
                     <button className="logout-button" onClick={logoutUser}>Logout</button>
-                    <button onClick={handleOpenCartSidebar}>My Cart</button>
+                    <div className='my-cart-container'>
+                        <button onClick={handleOpenCartSidebar}>My Cart</button>
+                        {cartItems.length >= 1 &&
+                        <div className="cart-notification-container">
+                            <p>{cartItems.length}</p>
+                        </div>
+                        }
+                    </div>
                     <CartSidebarContainer />
                 </div>
             );
