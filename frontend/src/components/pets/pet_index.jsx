@@ -22,6 +22,13 @@ const PetsIndex = (props) => {
     dispatch(receiveCart(cart.data));
   };
 
+  const handleCloseSidebar = (e) => {
+    e.stopPropagation();
+
+    const cartSidebar = document.getElementById("cart-sidebar-container")
+    cartSidebar.classList.remove('active')
+  }
+
   // const cart = useSelector((state) => state.entities.cart);
 
   if (!pets || !cartItems) return null;
@@ -46,7 +53,7 @@ const PetsIndex = (props) => {
   ));
 
   return (
-    <div className="pets-index-container">
+    <div className="pets-index-container" onClick={handleCloseSidebar}>
       <div className="pets-index-content">
         <ul>{petItems}</ul>
       </div>

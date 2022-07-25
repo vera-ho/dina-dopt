@@ -60,6 +60,13 @@ const PetShow = props => {
         setReviewTitle("");
     }
 
+    const handleCloseSidebar = (e) => {
+        e.stopPropagation();
+    
+        const cartSidebar = document.getElementById("cart-sidebar-container")
+        cartSidebar.classList.remove('active')
+    }
+
     // const addToCart = async (e) => {
     //     e.preventDefault();
     //     let newCart = await addToCart(props.currentCart.id);
@@ -85,7 +92,7 @@ const PetShow = props => {
         return null
     } else { 
         return (
-            <div className="pet-show-container">
+            <div className="pet-show-container" onClick={handleCloseSidebar}>
                 <div className="pet-show-content">
                     <div className="pet-show-content-left">
                         <div className="pet-show-image-container">
