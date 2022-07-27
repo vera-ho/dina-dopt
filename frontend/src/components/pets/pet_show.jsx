@@ -76,22 +76,21 @@ const PetShow = props => {
     //     return dispatch(receiveCart(newCart.data));
     // };
 
-            
     const noReviews = (<li className="review-item">Be the first to leave a review!</li>);
 
     const reviewItems = reviews.map( (review, idx) => {
-        let reviewUser = (users.filter(user => user._id === review.user)[0]) || [];
+        let reviewUser = (users.filter(user => user._id === review.user)[0]) || {};
 
         const deleteReview = (e) => {
             e.preventDefault();
             deleteSingleReview(review._id);
             dispatch(removeReview(review._id));
         }
-
+         
         return (
             <li className="review-item" key={idx}>
                 <div>
-                    <p>Name: {reviewUser ? reviewUser.name : ""}</p>
+                    <p>Name: {reviewUser.name ? reviewUser.name : "[Deleted User]"}</p>
                     <p>Title: {review.title}</p>
                     <p>Review: {review.text}</p>
                 </div>
