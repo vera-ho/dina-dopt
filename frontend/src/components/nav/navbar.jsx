@@ -9,10 +9,12 @@ const NavBar = props => {
 
     const dispatch = useDispatch();
 
-    const { cartItems } = props;
+    const { cartItems, loggedIn } = props;
 
     useEffect(() => {
-        fetchCartData();
+        if (loggedIn) {
+            fetchCartData();
+        }
     }, [])
 
     const fetchCartData = async () => {

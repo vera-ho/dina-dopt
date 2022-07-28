@@ -86,7 +86,7 @@ const PetShow = props => {
             deleteSingleReview(review._id);
             dispatch(removeReview(review._id));
         }
-         
+        
         return (
             <li className="review-item" key={idx}>
                 <div>
