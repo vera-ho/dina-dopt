@@ -1,6 +1,6 @@
 # Dina-Dopt
 Check out the live app [here.](https://dina-dopt.herokuapp.com/) \
-For design documentation, see wiki [here.](https://github.com/vh71886/dina-dopt/wiki)
+For design documentation, see wiki [here.](https://github.com/vera-ho/dina-dopt/wiki)
 
 ## Introduction
 Dina-Dopt is a MERN stack web application that allows users to adopt and review prehistoric pets. It is created for educational purposes only. Please do not enter any sensitive data while exploring Dina-Dopt.

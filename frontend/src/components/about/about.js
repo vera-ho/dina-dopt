@@ -10,7 +10,7 @@ const AboutUs = (props) => {
         'Hello! I am a senior electrical engineer turned software engineer based in NYC. I have a passion for learning and creating new things, regardless of the medium.',
       desc2:
         'In addition to engineering, I love to hike, snowboard, and dabble in photography and sewing.',
-      github: 'https://github.com/vh71886',
+      github: 'https://github.com/vera-ho',
       linkedin: 'https://www.linkedin.com/in/veraho/',
       angellist: 'https://angel.co/u/vera-ho-1',
       portfolio: '',
@@ -118,7 +118,7 @@ const AboutUs = (props) => {
     <div className="about-page-container" onClick={handleCloseSidebar}>
       <div className="about-page-content">
         <div className="about-page-project-link">
-          <a href="https://github.com/vh71886/dina-dopt" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/vera-ho/dina-dopt" target="_blank" rel="noopener noreferrer">
             Click here for the Dina-Dopt GitHub Repository
           </a>
         </div>

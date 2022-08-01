@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vh71886/dina-dopt.git"
+    "url": "git+https://github.com/vera-ho/dina-dopt.git"
   },
   "keywords": [
     "n/a"
@@ -22,9 +22,9 @@
   "author": "VH, MC, KN, AN",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/vh71886/dina-dopt/issues"
+    "url": "https://github.com/vera-ho/dina-dopt/issues"
   },
-  "homepage": "https://github.com/vh71886/dina-dopt#readme",
+  "homepage": "https://github.com/vera-ho/dina-dopt#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
     "bcryptjs": "^2.4.3",
