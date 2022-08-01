@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AboutUs = (props) => {
+const AboutUs = () => {
   const developers = [
     {
       name: 'Vera Ho - Team Lead',
@@ -13,7 +13,7 @@ const AboutUs = (props) => {
       github: 'https://github.com/vera-ho',
       linkedin: 'https://www.linkedin.com/in/veraho/',
       angellist: 'https://angel.co/u/vera-ho-1',
-      portfolio: '',
+      portfolio: 'https://vera-ho.github.io/portfolio/',
       plogo: 'icons8-woman-profile-64.png',
     },
     {
