@@ -27,7 +27,7 @@ const AboutUs = (props) => {
       github: 'https://github.com/AlanCLN',
       linkedin: 'https://www.linkedin.com/in/alan-cln/',
       angellist: 'https://angel.co/u/alan-cheuk-lun-ng',
-      portfolio: '',
+      portfolio: 'https://alancln.dev/',
       plogo: 'icons8-user-64.png',
     },
     {
