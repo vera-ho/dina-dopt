@@ -41,7 +41,7 @@ const AboutUs = (props) => {
       github: 'https://github.com/mikechendev',
       linkedin: 'https://www.linkedin.com/in/michael-chen-74b973117/',
       angellist: 'https://angel.co/u/michael-chen-157',
-      portfolio: '',
+      portfolio: 'https://mikechendev.github.io/',
       plogo: 'icons8-user-64.png',
     },
     {
@@ -55,7 +55,7 @@ const AboutUs = (props) => {
       github: 'https://github.com/KevinNatera',
       linkedin: 'https://www.linkedin.com/in/kevin-n-916683190/',
       angellist: 'https://angel.co/u/kevin-natera',
-      portfolio: '',
+      portfolio: 'https://kevinnatera.com/',
       plogo: 'icons8-user-64.png',
     },
   ];
